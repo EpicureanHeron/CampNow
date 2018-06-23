@@ -1,0 +1,43 @@
+
+/* Determine Desired Look and Feel for the serious Camper & Hiker (REI-ish)
+   - How will that look and feel work with the functionality?*/
+
+
+
+body {
+    background-color: rgb(250, 237, 181);
+}
+
+h1 {
+    color: rgb(32, 32, 56);
+    margin-left: 20px;
+}
+
+/* Buttons */
+
+
+
+
+/* Form Data */
+
+/* Travel Start Date */
+
+#box { 
+
+    float: center; 
+    width: 400px;
+    height: 400px;
+    margin: 45px 0px 90px 430px;
+    font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+    font-weight: strong;
+    color: rgb(5, 4, 10);
+    padding: 5px 5px 5px 5px;
+    border-style: solid;
+    border-width: 5px;
+    background-color: rgba(245, 187, 121, 0.3);
+    border-color:#d18d10;
+
+  } 
+
+
+
