@@ -2,6 +2,9 @@
 
 //https://developer.nps.gov/api/v1/parks?stateCode=MN&api_key=N31BSTd4vcXAUWTFUb3FPdW4zBX1Jw3gVc5Sisw1
 
+
+var location;
+
 var parksBaseURL = "https://developer.nps.gov/api/v1/parks?";
 
 var parksStateCode = "stateCode=MN";
@@ -12,6 +15,21 @@ var parksAJAX = parksBaseURL + parksStateCode + parksAPIKey ;
   
   console.log(parksAJAX);
   //clears the gifs if there are some there
+
+  $(document).ready(function() {
+    $("#submitButton").on("click", function(event) {
+        event.preventDefault();
+        
+    // This line of code will grab the input from the textbox
+        var location = $("#where").val().trim();
+        
+        console.log(location)
+
+
+    });
+
+  })
+
 
   
 //this is the jquery ajax call
