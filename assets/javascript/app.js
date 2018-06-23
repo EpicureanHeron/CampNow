@@ -70,7 +70,7 @@ function googleMaps(queryCaptured) {
 
         console.log("initMap Triggered")
     
-        var queryToUse = "National Parks near" + queryCaptured
+        var queryToUse = "Grand Portage"
 
         console.log(queryToUse)
         var request = {
@@ -86,7 +86,7 @@ function googleMaps(queryCaptured) {
     
     function callback(results, status) {
         console.log("callback Triggered")
-        console.log(status)
+        console.log()
         if (status == google.maps.places.PlacesServiceStatus.OK) {
         for (var i = 0; i < results.length; i++) {
             var place = results[i];
