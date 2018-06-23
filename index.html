@@ -1,30 +1,66 @@
 <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Camp Now!</title>
 
-<html lang="en-us">
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-  <head>
+        <!-- Added a link to Bootstrap-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        
+        <!-- This links to the jQuery Library -->
+        <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    	
+    </head>
+    <body>
+        <div class="jumbotron">
+            <h1 class="display-1">Find your next Camping Spot...</h1>
+            <h4 class="head-text">Logo: Camp Now</h4>
+        </div>
+        <div class="container-fluid justify-content-start" id="input">
+            <div class="row"></div>
+                <div class="col-md-12"></div>
+                <form action="/action_page.php">
+                    Where do you want to go?: <input type="text" name="where"><br>
+                    <!-- Start: <input type="date" name="traveldate">
+                    End: <input type="date" name="traveldate"><br> -->
 
-    <meta charset="UTF-8">
-    <title>Title</title>
 
-    <!--bootstrap -->
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <!--local-->
-   <link rel="stylesheet"  href="assets/css/style.css">
+                  <div class="dateFieldWrap airShoppingDateFieldWrap">
+                        <div class="search-left-cell">
+                        <div> <label for="departureDate" >Depart Date</label></div>
+                            <div class="inputWrap">
+                                <input type="date" name="departureDate" maxlength="10" value="" id="departureDate" class="search-txt-field-Cal depart" autocomplete="off" aria-describedby="departDisc" aria-required="true" aria-haspopup="true" aria-invalid="false" placeholder="mm/dd/yyyy"/>
+                                <span id="departDisc" class="aria-offscreen">Select Depart Date</span>
+                                <span class="calendarClickIcon" id="depDateCalIcon"></span> </div>
+                        </div>
+                        <div class="search-middle-cell">&nbsp;</div>
+                        <div class="search-right-cell">
+                        <div> <label for="returnDate" id="lblRetDate" >Return Date</label></div>
+                            <div id="roundtripDateWrap">
+                                <input type="date" name="returnDate" maxlength="10" value="" id="returnDate" class="search-txt-field-Cal return" autocomplete="off" aria-describedby="returnDisc" aria-required="true" aria-haspopup="true" aria-invalid="false" placeholder="mm/dd/yyyy"/>
+                                <span id="returnDisc" class="aria-offscreen">Select Return Date</span>
+                                <span class="calendarClickIcon" id="retDateCalIcon"></span> </div>
+                        </div>
+                        <div class="form-check">
+                                <input type="checkbox" name="activity" value="Camping"> Camping<br>
+                                <input type="checkbox" name="activity" value="Hiking"> Hiking<br>
+                                <input type="checkbox" name="activity" value="Kayaking"> Kayaking<br>
+                                <input type="checkbox" name="activity" value="Fishing"> Fishing<br>
+                                <input type="checkbox" name="activity" value="Campfire"> Campfire<br>
+                                
+                              
+                        <input type="submit" value="Submit">
 
-  </head>
-
-  <body>
+                        <!-- Enter Dates - pop up Calendar -->
+                        <!-- Beginning and ending date -->
+                        <!-- Desired Activity - Drop down - Array - Ask Joe about NPS listed activities -->
     
+                        <!-- Return Info: Parks / Weather Info / Activities -->
     
-
-<!-- jQuery -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!--Firebase-->
-<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
-<!-- Script -->
-<script type="text/javascript" src="assets/javascript/app.js"></script>
-
-  </body>
-
+                      </form>
+                    </div>
+        </div>
+    </body>
 </html>
