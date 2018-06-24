@@ -13,8 +13,8 @@ $(document).ready(function() {
     // The movie from the textbox is then added to our array
         console.log(where)
     // Calling renderButtons which handles the processing of our movie array
-    parksAPICall(where)
-    googleMaps(where)
+    getParksByState(where)
+   // googleMaps(where)
     });
 })
 
@@ -30,7 +30,7 @@ $(document).ready(function() {
 
   
 //this is the jquery ajax call
-function parksAPICall(locationQuery){
+function getParksByState(locationQuery){
 
     
     var parksBaseURL = "https://developer.nps.gov/api/v1/parks?";
@@ -53,11 +53,54 @@ function parksAPICall(locationQuery){
     })
     //happens after the promise above is fullfilled
     .then(function(response) {
-         console.log("this is the NPS API Response:")
+        
          console.log(response)
+        for(i = 0; i < response.data.length; i ++){
+
+            var newDiv = $("<div>");
+
+            var parkNameP = $("<h3>");
+
+            var parkDescP = $("<p>");
+
+            parkNameP.html(response.data[i].fullName);
+
+            parkDescP.html(response.data[i].description);
+
+            newDiv.append(parkNameP);
+
+            newDiv.append(parkDescP);
+
+            newDiv.addClass("joePlaceHolder clickable")
+
+            newDiv.attr("latLong", response.data[i].latLong)
+
+            newDiv.attr("fullName", response.data[i].fullName)
+
+            $("#displayParks").append(newDiv)
+
+        }
+
     });
 }
 
+// $('body').on('click', '.clickable', function () {
+
+//     var 
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////
 function googleMaps(queryCaptured) {
     
     ///////GOOGLE MAPS STUFF///////

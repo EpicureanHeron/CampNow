@@ -1,34 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<script>
-
-
-    var cars = {
-  make: "Ford",
-  model: "Mustang",
-
-}
-
-
-var monsters = ["bananas", "test", "help"]
-
-var monster2 = {
-  zero: "banabas",
-  frankenstein: "test",
-  "Help me": "help"
-}
-
-console.log(monsters[2])
-
-console.log("monsters 2" + monster2.zero)
-
-
-
-
-
-console.log(monsters[2])
-</script>
     <head>
         <meta charset="UTF-8">
         <title>Camp Now!</title>
@@ -43,12 +15,28 @@ console.log(monsters[2])
     	
     </head>
     <body>
-        <div class="jumbotron">
-            <h1 class="display-1">Find your next Camping Spot...</h1>
-            <h4 class="head-text">Logo: Camp Now</h4>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="jumbotron">
+                        <h1 class="display-1">Find your next Camping Spot...</h1>
+                        <h4 class="head-text">Logo: Camp Now</h4>
+                    </div>
+                <!--closes col-->
+                </div>
+            <!--closes row-->
+            </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                 <div id="displayParks"></div>
+            </div>
         </div>
-        <form>
-            Where do you want to go?: <input type="text" name="where" id="where"><br>
+
+        <div class="row">
+            <div class="col-md-12">
+                 <form>
+            Which State do you want to camp in?: <input type="text" name="where" id="where"><br>
             <!-- Start: <input type="date" name="traveldate">
             End: <input type="date" name="traveldate"><br> -->
 
@@ -86,8 +74,16 @@ console.log(monsters[2])
                 <!-- Return Info: Parks / Weather Info / Activities -->
 
               </form>
+
+
+            </div>
+        </div>
+        
+       </div>
   
         </div>
+    <!--closes container-->
+    </div>
 
         <div id="map"></div>
 
