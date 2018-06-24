@@ -1,16 +1,16 @@
 
 var APIkey = "4f3188b24b25b236bcf5a2cffd75cfe6";
 var location = $("#locationInput").val().trim();
-var QueryURLCity ="api.openweathermap.org/data/2.5/forecast?q=" + location + APIkey;
+var QueryURL ="api.openweathermap.org/data/2.5/forecast?q=" + location + "&units=imperial&appid=" + APIkey;
 
 $(document).ready(function() {
     $("#submit-button").on("click", function(event) {
         event.preventDefault();
         $.ajax({
-            url: QueryURLCity,
+            url: QueryURL,
             method: 'GET'
         }).then(function(response) {
-            console.log(QueryURLCity);
+            console.log(QueryURL);
             console.log(response);   
 
             $("#temp").text("Temperature: " + response.main.temp);
