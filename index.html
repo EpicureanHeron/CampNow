@@ -22,8 +22,8 @@
         <div class="container-fluid justify-content-start" id="input">
             <div class="row"></div>
                 <div class="col-md-12"></div>
-                <form action="/action_page.php">
-                    Where do you want to go?: <input type="text" name="where" id="locationInput"><br>
+                <!-- <form action="/action_page.php"> -->
+                    Where do you want to go?: <input type="text" name="where" id="locationInput" value=""><br>
                     <!-- Start: <input type="date" name="traveldate">
                     End: <input type="date" name="traveldate"><br> -->
 
@@ -32,6 +32,7 @@
                         <div class="search-left-cell">
                         <div><br> <label for="weatherUpdate" >Regional Weather Forecast (5 Days)</label></div><br>
                             <div class="inputWrap">
+                                <!-- Return weather info -->
                                 <div id="temp"></div>
                                 <div id="wind"></div>
                                 <div id="humidity"></div>
@@ -61,7 +62,7 @@
                         <!-- Beginning and ending date -->
                         <!-- Desired Activity - Drop down - Array - Ask Joe about NPS listed activities -->
     
-                        <!-- Return Info: Parks / Weather Info / Activities -->
+                        
                         
                       </form>
                     </div>

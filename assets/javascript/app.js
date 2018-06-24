@@ -1,7 +1,7 @@
 
 var APIkey = "4f3188b24b25b236bcf5a2cffd75cfe6";
-var location = $("#locationInput").val().trim();
-var QueryURL ="api.openweathermap.org/data/2.5/forecast?q=" + location + "&units=imperial&appid=" + APIkey;
+var locationQuery = $("#locationInput").val().trim();
+var QueryURL ="api.openweathermap.org/data/2.5/forecast?q=" + locationQuery + "&units=imperial&appid=" + APIkey;
 
 $(document).ready(function() {
     $("#submit-button").on("click", function(event) {
