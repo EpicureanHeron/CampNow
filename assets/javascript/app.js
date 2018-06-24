@@ -77,6 +77,8 @@ function getParksByState(locationQuery){
 
             newDiv.attr("fullName", response.data[i].fullName)
 
+            newDiv.attr("parkCode", response.data[i].parkCode)
+
             $("#displayParks").append(newDiv)
 
         }
@@ -84,10 +86,80 @@ function getParksByState(locationQuery){
     });
 }
 
-// $('body').on('click', '.clickable', function () {
+$('body').on('click', '.clickable', function () {
 
-//     var 
-// })
+    var parkCodeToPass = $(this).attr("parkCode")
+
+    console.log(parkCodeToPass)
+
+    $("#displayParks").empty()
+
+    getParksInfoByCode(parkCodeToPass)
+})
+
+function getParksInfoByCode (parkCode) {
+
+
+    var parksCampBaseURL = "https://developer.nps.gov/api/v1/campgrounds?";
+
+    var parksCampQuery = "parkCode=";
+
+    var parksAPIKey = "&api_key=N31BSTd4vcXAUWTFUb3FPdW4zBX1Jw3gVc5Sisw1";
+
+    var parksAJAX = parksCampBaseURL + parksCampQuery + parkCode + parksAPIKey ;
+
+    console.log(parksAJAX)
+
+    $.ajax({
+        //takes the URL which is our queryURL
+        url: parksAJAX,
+        //magic method of GET (something something SERVER HTTP STUFF something something)
+        method: "GET"
+        })
+        //happens after the promise above is fullfilled
+        .then(function(response) {
+            var info = response.data[0]
+            console.log(response)
+            //this creates an array of all the keys in the amenities object
+            //Had to do it this way because not sure what will be returned by a certain key, seems to be limited to BOOLEAN or an ARRAY
+            var amenitiesArr = (Object.keys(info.amenities))
+
+           
+            console.log(info.amenities.toilets)
+                for (i = 0; i < amenitiesArr.length; i ++){
+                    var keyToTest = amenitiesArr[i] 
+                    console.log(info.amenities.keyToTest)
+                    if(info.amenities.keyToTest === undefined ) {
+                        console.log(keyToTest)
+                    }
+                    // else {
+                    //     if(typeof(response.data[0].amenities.amenitiesArr[i]) === "boolean"){
+                    //         var newP = $("<p>")
+                    //         newP.html(amenitiesArr[i] + " " + response.data[0].amenities.amenitiesArr[i])
+    
+                    //         $("#displayParks").append(newP)
+                    //     }
+                    //     else if(response.data[0].amenities.amenitiesArr[i].constructor === Array) {
+                    //         for (j; j < response.data[0].amenities.amenitiesArr[i].length; j ++ ){
+                    //         var newP = $("<p>")
+                    //         newP.html(amenitiesArr[i] + " " + response.data[0].amenities.amenitiesArr[i][j])
+    
+                    //         $("#displayParks").append(newP)
+    
+                    //         }      
+                    //     }
+    
+                    // }
+                }
+
+               // newP.html(response.data[0].amenities.toilets)
+               
+              
+            
+            
+        });
+
+}
 
 
 
