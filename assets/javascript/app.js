@@ -1,4 +1,4 @@
-alert("Connected");
+
 var APIkey = "4f3188b24b25b236bcf5a2cffd75cfe6";
 var location = $("#locationInput").val().trim();
 var QueryURLCity ="api.openweathermap.org/data/2.5/forecast?q=" + location + APIkey;
