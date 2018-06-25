@@ -128,25 +128,25 @@ function googleMaps(queryCaptured) {
 }
 
 //Calling weather API
-var APIkey = "4f3188b24b25b236bcf5a2cffd75cfe6";
-var locationQuery = $("#cityInput").val().trim();
-var QueryURL ="api.openweathermap.org/data/2.5/forecast?q=" + locationQuery + "&units=imperial&appid=" + APIkey;
+// var APIkey = "33600f0073ced31aaa6969ba360fc0d0";
 
-$("#citySubmit").on("click", function(event) {
-    event.preventDefault();
-    $.ajax({
-        url: QueryURL,
-        method: 'GET'
-    }).then(function(response) {
-        console.log(QueryURL);
-        console.log(response);   
+// $("#parkSubmit").on("click", function(event) {
+//     event.preventDefault();
+//     var locationQuery = $("#_NO_INPUT_").val().trim();
+//     var QueryURL ="https://api.openweathermap.org/data/2.5/forecast?q=" + locationQuery + "&units=imperial&appid=" + APIkey;
+//     $.ajax({
+//         url: QueryURL,
+//         method: 'GET'
+//     }).then(function(response) {
+//         console.log(QueryURL);
+//         console.log(response);   
 
-        $("#temp").text("Temperature: " + response.main.temp);
-        $("#wind").text("Wind Speed: " + response.wind.speed);
-        $("#humidity").text("Humidty: " + response.main.humidity);
+//         $("#temp").text("Temperature: " + response.main.temp);
+//         $("#wind").text("Wind Speed: " + response.wind.speed);
+//         $("#humidity").text("Humidty: " + response.main.humidity);
 
-        console.log("Temperature: " + response.main.temp);
-        console.log("Wind Speed: " + response.wind.speed);
-        console.log("Humidty: " + response.main.humidity);
-    });
-});
+//         console.log("Temperature: " + response.main.temp);
+//         console.log("Wind Speed: " + response.wind.speed);
+//         console.log("Humidty: " + response.main.humidity);
+//     });
+// });
