@@ -41,17 +41,34 @@
             End: <input type="date" name="traveldate"><br> -->
 
                 <br><br>
-            <form>
-                <div class="form-group">
-                  <label for="examplePark">Enter Your Park or Campground</label>
-                  <input type="text" class="form-control" id="parkInput" aria-describedby="parkHelp">
-                </div>
-                <button type="submit" class="btn btn-primary" id="parkSubmit" value="">Submit</button>
-              </form>
-                <div id="temp"></div>
-                <div id="wind"></div>
-                <div id="humidity"></div> 
-                <br><br>
+            
+        <form>
+            Enter Park or Campground Here:<br> 
+            <input type="text" name="location" value="" id="locationInput"
+            <input type="submit" value="submit" id="submit-btn1">
+        </form>       
+        <br><br>
+        <p>Weather Forecast (5-Day)</p>              
+        <div id="temp"></div>
+        <div id="wind"></div>
+        <div id="humidity"></div> 
+        <br><br>
+
+                <!-- <form>
+                    Train Name:<br>
+                    <input type="text" name="train-name" value="" id="train-input">
+                    <br>
+                    Destination:<br>
+                    <input type="text" name="destination" value="" id="destination-input">
+                    <br>
+                    Train Time (military time):<br>
+                    <input type="text" name="train-time" value="" id="time-input">
+                    <br>
+                    Frequency (min):<br>
+                    <input type="text" name="frequency" value="" id="frequency-input">
+                    <br><br>
+                    <input type="submit" value="Submit" id="submit">
+                </form> -->
                 
                 <div class="form-check">
                         <input type="checkbox" name="activity" value="Camping"> Camping<br>
