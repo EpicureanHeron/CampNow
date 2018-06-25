@@ -21,13 +21,6 @@ $(document).ready(function() {
 
 
 
-
-  
-  
-  //clears the gifs if there are some there
-
-
-
   
 //this is the jquery ajax call
 function getParksByState(locationQuery){
@@ -88,13 +81,16 @@ function getParksByState(locationQuery){
 
 $('body').on('click', '.clickable', function () {
 
-    var parkCodeToPass = $(this).attr("parkCode")
+    var parkCodeToPass = $(this).attr("parkCode");
+
+    var fullNameToPass = $(this).attr("fullName");
 
     console.log(parkCodeToPass)
 
     $("#displayParks").empty()
 
     getParksInfoByCode(parkCodeToPass)
+    googleMaps(fullNameToPass)
 })
 
 function getParksInfoByCode (parkCode) {
@@ -118,20 +114,20 @@ function getParksInfoByCode (parkCode) {
         })
         //happens after the promise above is fullfilled
         .then(function(response) {
-            var info = response.data[0]
-            console.log(response)
+            var info = response.data[0].amenities
+            console.log(info)
             //this creates an array of all the keys in the amenities object
             //Had to do it this way because not sure what will be returned by a certain key, seems to be limited to BOOLEAN or an ARRAY
-            var amenitiesArr = (Object.keys(info.amenities))
+            // var amenitiesArr = (Object.keys(info.amenities))
 
            
-            console.log(info.amenities.toilets)
-                for (i = 0; i < amenitiesArr.length; i ++){
-                    var keyToTest = amenitiesArr[i] 
-                    console.log(info.amenities.keyToTest)
-                    if(info.amenities.keyToTest === undefined ) {
-                        console.log(keyToTest)
-                    }
+            // console.log(info.amenities.toilets)
+            //     for (i = 0; i < amenitiesArr.length; i ++){
+            //         var keyToTest = amenitiesArr[i] 
+            //         console.log(info.amenities.keyToTest)
+            //         if(info.amenities.keyToTest === undefined ) {
+            //             console.log(keyToTest)
+            //         }
                     // else {
                     //     if(typeof(response.data[0].amenities.amenitiesArr[i]) === "boolean"){
                     //         var newP = $("<p>")
@@ -150,16 +146,16 @@ function getParksInfoByCode (parkCode) {
                     //     }
     
                     // }
-                }
+                // }
 
                // newP.html(response.data[0].amenities.toilets)
                
               
-            
+        //CLOSES THE THEN COMMAND
             
         });
-
-}
+        //CLOSES THE FUNCTION
+ }
 
 
 
@@ -185,11 +181,11 @@ function googleMaps(queryCaptured) {
 
         console.log("initMap Triggered")
     
-        var queryToUse = "Grand Portage"
+        console.log(queryCaptured)
 
-        console.log(queryToUse)
+        //console.log(queryToUse)
         var request = {
-        query: queryToUse,
+        query: queryCaptured,
         fields: ['photos', 'formatted_address', 'name', 'rating', 'opening_hours', 'geometry'],
         
 
