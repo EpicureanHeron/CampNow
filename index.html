@@ -40,23 +40,26 @@
             <!-- Start: <input type="date" name="traveldate">
             End: <input type="date" name="traveldate"><br> -->
 
-
-          <div class="dateFieldWrap airShoppingDateFieldWrap">
-                <div class="search-left-cell">
-                <div> <label for="departureDate" >Depart Date</label></div>
-                    <div class="inputWrap">
-                        <input type="date" name="departureDate" maxlength="10" value="" id="departureDate" class="search-txt-field-Cal depart" autocomplete="off" aria-describedby="departDisc" aria-required="true" aria-haspopup="true" aria-invalid="false" placeholder="mm/dd/yyyy"/>
-                        <span id="departDisc" class="aria-offscreen">Select Depart Date</span>
-                        <span class="calendarClickIcon" id="depDateCalIcon"></span> </div>
+                <br><br>
+            <form>
+                <div class="form-group">
+                  <label for="exampleCity">Enter City</label>
+                  <input type="text" class="form-control" id="cityInput" aria-describedby="cityHelp">
                 </div>
-                <div class="search-middle-cell">&nbsp;</div>
+                <button type="submit" class="btn btn-primary" id="citySubmit" value="">Submit</button>
+              </form>
+                <div id="temp"></div>
+                <div id="wind"></div>
+                <div id="humidity"></div> 
+                <br><br>
+                <!-- <div class="search-middle-cell">&nbsp;</div>
                 <div class="search-right-cell">
                 <div> <label for="returnDate" id="lblRetDate" >Return Date</label></div>
                     <div id="roundtripDateWrap">
                         <input type="date" name="returnDate" maxlength="10" value="" id="returnDate" class="search-txt-field-Cal return" autocomplete="off" aria-describedby="returnDisc" aria-required="true" aria-haspopup="true" aria-invalid="false" placeholder="mm/dd/yyyy"/>
                         <span id="returnDisc" class="aria-offscreen">Select Return Date</span>
                         <span class="calendarClickIcon" id="retDateCalIcon"></span> </div>
-                </div>
+                </div> -->
                 <div class="form-check">
                         <input type="checkbox" name="activity" value="Camping"> Camping<br>
                         <input type="checkbox" name="activity" value="Hiking"> Hiking<br>
