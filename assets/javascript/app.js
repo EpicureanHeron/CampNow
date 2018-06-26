@@ -4,12 +4,12 @@ $(document).ready(function() {
     $("#submitButton").on("click", function(event) {
         event.preventDefault();
         
-    // This line of code will grab the input from the textbox
+   
        var where = $("#where").val().trim();
         $('#buttonInput').val('');
-    // The movie from the textbox is then added to our array
+   
         console.log(where)
-    // Calling renderButtons which handles the processing of our movie array
+    
     getParksByState(where)
    // googleMaps(where)
     });
@@ -128,25 +128,52 @@ function googleMaps(queryCaptured) {
 }
 
 //Calling weather API
-// var APIkey = "33600f0073ced31aaa6969ba360fc0d0";
+var APIkey = "33600f0073ced31aaa6969ba360fc0d0";
 
-// $("#parkSubmit").on("click", function(event) {
-//     event.preventDefault();
-//     var locationQuery = $("#_NO_INPUT_").val().trim();
-//     var QueryURL ="https://api.openweathermap.org/data/2.5/forecast?q=" + locationQuery + "&units=imperial&appid=" + APIkey;
-//     $.ajax({
-//         url: QueryURL,
-//         method: 'GET'
-//     }).then(function(response) {
-//         console.log(QueryURL);
-//         console.log(response);   
+$("#submit-park").on("click", function(event) {
+    event.preventDefault();
+    var locationInput = $("").val().trim(); // <--- WHAT TO INPUT???? 
+    // Use lat={lat}&lon={lon} for coordinates
+    var QueryURL ="api.openweathermap.org/data/2.5/forecast?" + "lat27.95=&lon=82.46"  + "&units=imperial&appid=" + APIkey;
+    $.ajax({
+        url: QueryURL,
+        method: 'GET'
+    }).then(function(response) {
+        console.log(QueryURL);
+        console.log(response);   
 
-//         $("#temp").text("Temperature: " + response.main.temp);
-//         $("#wind").text("Wind Speed: " + response.wind.speed);
-//         $("#humidity").text("Humidty: " + response.main.humidity);
+        $("#temp").text("Temperature: " + response.main.temp);
+        $("#wind").text("Wind Speed: " + response.wind.speed);
+        $("#humidity").text("Humidty: " + response.main.humidity);
 
-//         console.log("Temperature: " + response.main.temp);
-//         console.log("Wind Speed: " + response.wind.speed);
-//         console.log("Humidty: " + response.main.humidity);
-//     });
-// });
+        console.log("Temperature: " + response.main.temp);
+        console.log("Wind Speed: " + response.wind.speed);
+        console.log("Humidty: " + response.main.humidity);
+    });
+});
+
+// Below is the API response based on geographic coordinates:
+
+// {"city":{"id":1851632,"name":"Shuzenji",
+// "coord":{"lon":138.933334,"lat":34.966671},
+// "country":"JP",
+// "cod":"200",
+// "message":0.0045,
+// "cnt":38,
+// "list":[{
+//         "dt":1406106000,
+//         "main":{
+//             "temp":298.77,
+//             "temp_min":298.77,
+//             "temp_max":298.774,
+//             "pressure":1005.93,
+//             "sea_level":1018.18,
+//             "grnd_level":1005.93,
+//             "humidity":87,
+//             "temp_kf":0.26},
+//         "weather":[{"id":804,"main":"Clouds","description":"overcast clouds","icon":"04d"}],
+//         "clouds":{"all":88},
+//         "wind":{"speed":5.71,"deg":229.501},
+//         "sys":{"pod":"d"},
+//         "dt_txt":"2014-07-23 09:00:00"}
+//         ]}
