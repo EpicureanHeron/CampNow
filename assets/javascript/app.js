@@ -132,9 +132,9 @@ var APIkey = "33600f0073ced31aaa6969ba360fc0d0";
 
 $("#submit-park").on("click", function(event) {
     event.preventDefault();
-    var locationInput = $("").val().trim(); // <--- WHAT TO INPUT???? 
+    // var locationInput = $("").val().trim(); // <--- WHAT TO INPUT???? 
     // Use lat={lat}&lon={lon} for coordinates
-    var QueryURL ="api.openweathermap.org/data/2.5/forecast?" + "lat27.95=&lon=82.46"  + "&units=imperial&appid=" + APIkey;
+    var QueryURL ="https://api.openweathermap.org/data/2.5/forecast?lat=" + "lat=28&lon=82"  + "&units=imperial&appid=" + APIkey;
     $.ajax({
         url: QueryURL,
         method: 'GET'
