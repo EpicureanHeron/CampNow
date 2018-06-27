@@ -14,6 +14,8 @@ $(document).ready(function() {
         console.log(where)
     // Calling renderButtons which handles the processing of our movie array
     $(".dateFieldWrap").empty()
+
+
     getParksByState(where)
  
    // googleMaps(where)
@@ -94,7 +96,7 @@ $('body').on('click', '.clickable', function () {
     var latLong = $(this).attr("latLong")
     console.log(typeof latLong)
     console.log(latLong)
-    var newLatLong = latLong.split(",")
+    var newLatLong = latLong.split(", ")
     console.log(newLatLong)
     var emptyArr = [];
     for (i = 0; i < newLatLong.length; i ++){
@@ -102,10 +104,12 @@ $('body').on('click', '.clickable', function () {
         newFormat = newFormat.slice(0, 12)
         emptyArr.push(newFormat)
     }
+    emptyArr[1] = emptyArr[1].replace("long", "lon");
     console.log(emptyArr)
+    //THREE AJAX CALLS
   //  getParksInfoByCode(parkCodeToPass)
     //googleMaps(fullNameToPass)
-    weather(emptArr[0], emptyArr[1])
+    weather(emptyArr[0], emptyArr[1])
 })
 
 function getParksInfoByCode (parkCode) {
@@ -240,10 +244,11 @@ function weather(lat, lon) {
     //Calling weather API
     var APIkey = "33600f0073ced31aaa6969ba360fc0d0";
     
-    
+      
         // var locationInput = $("").val().trim(); // <--- WHAT TO INPUT???? 
         // Use lat={lat}&lon={lon} for coordinates
         var QueryURL ="https://api.openweathermap.org/data/2.5/forecast?" + lat + "&" + lon  + "&units=imperial&appid=" + APIkey;
+        console.log(QueryURL )
         $.ajax({
             url: QueryURL,
             method: 'GET'
@@ -251,10 +256,26 @@ function weather(lat, lon) {
             console.log(response, " is the weather");
             for (var i = 0; i < response.list.length; i++) {
                 if (i%8 === 0) {
-                $("#weather").append("<div id='temp'>" + response.list[i].main.temp + "</div><div id='wind'>" + response.list[i].wind.speed + "</div><div id='humidity'>" + response.list[i].main.humidity + "</div>")
+                var dayDiv = $("<div>")
+                var newP = $("<p>")
+                newP.html("Temp: " + response.list[i].main.temp)
+                dayDiv.append(newP)
+                
+                var newP = $("<p>")
+                newP.html("Wind Speed: " + response.list[i].wind.speed)
+                dayDiv.append(newP)
+
+                var newP = $("<p>")
+                newP.html("Humidity: " + response.list[i].main.humidity)
+                dayDiv.append(newP)
+
+                dayDiv.addClass("joePlaceHolder")
+
+                $("#displayParks").append(dayDiv)
+               // $("#displayParks").append("<div  id='temp'>" + response.list[i].main.temp + "</div><div id='wind'>" + response.list[i].wind.speed + "</div><div  id='humidity'>" + response.list[i].main.humidity + "</div>")
                 //$("#weather").append(weatherDisplay(response, i))
                 //console.log(weatherResponse(response, i))
-                response.list[i].main.temp
+                //response.list[i].main.temp
                 }
             }
             // <div id="temp"></div>
