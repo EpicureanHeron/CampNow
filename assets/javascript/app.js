@@ -1,7 +1,7 @@
 //https://developer.nps.gov/api/v1/parks?stateCode=MN&api_key=N31BSTd4vcXAUWTFUb3FPdW4zBX1Jw3gVc5Sisw1
 
 $(document).ready(function() {
-    $("#submitButton").on("click", function(event) {
+    $("#submit-park").on("click", function(event) {
         event.preventDefault();
         
    
@@ -9,7 +9,7 @@ $(document).ready(function() {
         $('#buttonInput').val('');
    
         console.log(where)
-    
+    weather()
     getParksByState(where)
    // googleMaps(where)
     });
@@ -127,30 +127,40 @@ function googleMaps(queryCaptured) {
 
 }
 
+function weather(){
 //Calling weather API
 var APIkey = "33600f0073ced31aaa6969ba360fc0d0";
 
-$("#submit-park").on("click", function(event) {
-    event.preventDefault();
+
     // var locationInput = $("").val().trim(); // <--- WHAT TO INPUT???? 
     // Use lat={lat}&lon={lon} for coordinates
-    var QueryURL ="https://api.openweathermap.org/data/2.5/forecast?lat=" + "lat=28&lon=82"  + "&units=imperial&appid=" + APIkey;
+    var QueryURL ="https://api.openweathermap.org/data/2.5/forecast?" + "lat=28&lon=82"  + "&units=imperial&appid=" + APIkey;
     $.ajax({
         url: QueryURL,
         method: 'GET'
-    }).then(function(response) {
-        console.log(QueryURL);
-        console.log(response);   
+    }).then(function(response){
+        console.log(response, " is the weather");
+        for (var i = 0; i < response.list.length; i++) {
+            $("#weather").append("<div id='temp'>" + response.list[i].main.temp + "</div><div id='wind'>" + response.list[i].wind.speed + "</div><div id='humidity'>" + response.list[i].main.humidity + "</div>")
+            //$("#weather").append(weatherDisplay(response, i))
+            //console.log(weatherResponse(response, i))
+            response.list[i].main.temp
+        }
+        // <div id="temp"></div>
+        // <div id="wind"></div>
+        // <div id="humidity"></div> 
+    })
+    
+   function weatherDisplay(response, i) {
+       return "<div id='temp'>" + response.list[i].main.temp + "</div><div id='wind'>" + response.list[i].wind.speed + "</div><div id='humidity'>" + response.list[i].main.humidity + "</div>"
+   }     
+    
+    
+     
+    
 
-        $("#temp").text("Temperature: " + response.main.temp);
-        $("#wind").text("Wind Speed: " + response.wind.speed);
-        $("#humidity").text("Humidty: " + response.main.humidity);
 
-        console.log("Temperature: " + response.main.temp);
-        console.log("Wind Speed: " + response.wind.speed);
-        console.log("Humidty: " + response.main.humidity);
-    });
-});
+}
 
 // Below is the API response based on geographic coordinates:
 

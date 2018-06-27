@@ -6,8 +6,7 @@
         <title>Camp Now!</title>
 
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-        <!--script-->
-        <script type="text/javascript" src="assets/javascript/app.js"></script>
+        
         <!--Firebase-->
         <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
 
@@ -16,6 +15,8 @@
         
         <!-- This links to the jQuery Library -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!--script-->
+        <script type="text/javascript" src="assets/javascript/app.js"></script>
         
     	
     </head>
@@ -49,15 +50,13 @@
             
         <form>
             Enter Park or Campground Here:<br> 
-            <input type="text" name="location" value="" id="locationInput"
+            <input type="text" value="" id="locationInput"
             <input type="text" value="" id="park-input"><br>
-            <input type="submit" value="submit" id="submit-park">
+            <input type="submit" id="submit-park">
         </form>       
         <br><br>
         <p>Weather Forecast (5-Day)</p>              
-        <div id="temp"></div>
-        <div id="wind"></div>
-        <div id="humidity"></div> 
+            <div id="weather"></div>
         <br><br>
 
         
