@@ -108,7 +108,7 @@ $('body').on('click', '.clickable', function () {
     console.log(emptyArr)
     //THREE AJAX CALLS
   //  getParksInfoByCode(parkCodeToPass)
-    //googleMaps(fullNameToPass)
+    googleMaps(fullNameToPass)
     weather(emptyArr[0], emptyArr[1])
 })
 
@@ -220,9 +220,23 @@ function googleMaps(queryCaptured) {
         console.log()
         if (status == google.maps.places.PlacesServiceStatus.OK) {
         for (var i = 0; i < results.length; i++) {
+
             var place = results[i];
            
-           console.log(results[i]);
+           console.log(place);
+
+        
+           ///NEW CODE
+           //THIS WORKS!
+           var newPhoto =  place.photos[0].getUrl({'maxWidth': 1000, 'maxHeight': 400})
+          console.log(newPhoto)
+          //console.log(place.photos[0])
+            var newImg = $("<img>")
+            newImg.attr("src", newPhoto)
+            $("#displayParks").append(newImg)
+
+
+           ////END NEW CODE
            
         }
        // console.log(photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35}))
@@ -237,6 +251,8 @@ function googleMaps(queryCaptured) {
     initMap()
     //closes the window on load function
     // }
+
+
 
 }
 
