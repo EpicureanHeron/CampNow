@@ -35,16 +35,17 @@
 
         <div class="row">
             <div class="col-md-12">
+                    <div class="dateFieldWrap airShoppingDateFieldWrap">
+                            <div class="search-left-cell">
+                            <div> <label for="departureDate" >Depart Date</label></div>
+                                <div class="inputWrap">
                  <form>
             Which State do you want to camp in?: <input type="text" name="where" id="where"><br>
             <!-- Start: <input type="date" name="traveldate">
             End: <input type="date" name="traveldate"><br> -->
 
 
-          <div class="dateFieldWrap airShoppingDateFieldWrap">
-                <div class="search-left-cell">
-                <div> <label for="departureDate" >Depart Date</label></div>
-                    <div class="inputWrap">
+         
                         <input type="date" name="departureDate" maxlength="10" value="" id="departureDate" class="search-txt-field-Cal depart" autocomplete="off" aria-describedby="departDisc" aria-required="true" aria-haspopup="true" aria-invalid="false" placeholder="mm/dd/yyyy"/>
                         <span id="departDisc" class="aria-offscreen">Select Depart Date</span>
                         <span class="calendarClickIcon" id="depDateCalIcon"></span> </div>
@@ -93,7 +94,7 @@
 <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
 
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxtWW9Pke1nYeDbz6lvH_RReHGkl4z5JI&libraries=places"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<apiKEY>&libraries=places"></script>
 
 <!--script-->
 <script type="text/javascript" src="assets/javascript/app.js"></script>
