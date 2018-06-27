@@ -84,12 +84,54 @@ function getParksByState(locationQuery){
     });
 }
 
-// $('body').on('click', '.clickable', function () {
 
-//     var 
-// })
+$('body').on('click', '.clickable', function () {
 
+    var parkCodeToPass = $(this).attr("parkCode");
 
+    var fullNameToPass = $(this).attr("fullName");
+
+    console.log(parkCodeToPass)
+
+    $("#displayParks").empty();
+
+    getParksInfoByCode(parkCodeToPass);
+    googleMaps(fullNameToPass);
+});
+
+$("#displayParks").on('click', function () {
+
+    // new Div to display weather, site img and amenities
+    var ultScreen = $("<div>");
+    // 5 day weather display
+    var weatherDisp = $("<div>");
+    // site image
+    var campImg = $("<img>");
+    // amenities info
+    var amenities = $("<p>");
+    // weather variable to display
+    // weatherDisp.html(response.data[i]., Precip, Wind);
+    // image of site from Google api
+    // campImg.html(response.data[i].image);
+    // information from NPS amenities api
+    // amenities.html(response.data[i].data);
+    // appending weatherDisp to ultScreen div
+    ultScreen.append(weatherDisp);
+    // appending site image to ultScreen div
+    ultScreen.append(campImg);
+    // appending amenities to ultScreen div
+    ultScreen.append(amenities);
+    // adding class to style weather display
+    // weatherDisp.addclass("weather-display");
+
+    // adding class to style weather display
+    campImg.addClass("camp-display");
+    // adding class to amenities paragraph
+    amenities.addClass("amenities");
+
+    $("#ultScreen").append(ultScreen)
+
+});
 
 
 

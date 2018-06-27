@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="jumbotron">
+                    <div class="jumbotron" id="displayParks">
                         <h1 class="display-1">Find your next Camping Spot...</h1>
                         <h4 class="head-text">Logo: Camp Now</h4>
                     </div>
@@ -35,10 +35,11 @@
 
         <div class="row">
             <div class="col-md-12">
-                 <form>
-            Which State do you want to camp in?: <input type="text" name="where" id="where"><br>
-            <!-- Start: <input type="date" name="traveldate">
-            End: <input type="date" name="traveldate"><br> -->
+                 <form class="form-inline">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <!-- <span>What state do you want to Camp In???</span> -->
+                    <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
+                </form>
 
 
           <div class="dateFieldWrap airShoppingDateFieldWrap">
@@ -57,12 +58,12 @@
                         <span id="returnDisc" class="aria-offscreen">Select Return Date</span>
                         <span class="calendarClickIcon" id="retDateCalIcon"></span> </div>
                 </div>
-                <div class="form-check">
+                <!-- <div class="form-check">
                         <input type="checkbox" name="activity" value="Camping"> Camping<br>
                         <input type="checkbox" name="activity" value="Hiking"> Hiking<br>
                         <input type="checkbox" name="activity" value="Kayaking"> Kayaking<br>
                         <input type="checkbox" name="activity" value="Fishing"> Fishing<br>
-                        <input type="checkbox" name="activity" value="Campfire"> Campfire<br>
+                        <input type="checkbox" name="activity" value="Campfire"> Campfire<br> -->
                         
                       
                 <input type="submit" value="Submit" id="submitButton">
@@ -85,7 +86,7 @@
     <!--closes container-->
     </div>
 
-        <div id="map"></div>
+        <div id="ultScreen"></div>
 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

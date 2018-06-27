@@ -1,8 +1,13 @@
 body {
     background-image: url("../images/background.jpg");
-    background-repeat: no-repeat;
+    background-repeat: repeat;
+    overflow: auto;
     background-size: 100%;
     height: 960px;
+}
+
+.form-inline {
+    align: center;
 }
 
 #input {
@@ -37,4 +42,11 @@ body {
     background-color: white;
     opacity: 0.8;
     padding: 5px;
+}
+
+.weather-display {
+    display: inline-block;
+    width: 100%;
+    height: 300px;
+    background-color: red;
 }
