@@ -6,6 +6,31 @@
 $(document).ready(function() {
     $("#submitButton").on("click", function(event) {
         event.preventDefault();
+
+
+        //call modal
+
+     
+// Modal alert trigger logic
+// If dates are withing 5 days, modal will not trigger
+var departureDate = $("#departureDate").val()
+console.log(departureDate)
+
+// If dates exceed 5 day Trigger Modal
+
+var day = moment().diff(departureDate, 'day')
+console.log(day)
+
+//logic for date out to far
+
+if (day < -6) {
+    $('#calendarAlert').modal()
+    
+}
+
+
+
+
         
     // This line of code will grab the input from the textbox
        var where = $("#where").val().trim();
