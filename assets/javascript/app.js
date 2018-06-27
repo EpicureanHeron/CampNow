@@ -6,14 +6,16 @@
 $(document).ready(function() {
     $("#submitButton").on("click", function(event) {
         event.preventDefault();
-        
+       
     // This line of code will grab the input from the textbox
        var where = $("#where").val().trim();
         $('#buttonInput').val('');
     // The movie from the textbox is then added to our array
         console.log(where)
     // Calling renderButtons which handles the processing of our movie array
+    $(".dateFieldWrap").empty()
     getParksByState(where)
+ 
    // googleMaps(where)
     });
 })
@@ -187,6 +189,7 @@ function googleMaps(queryCaptured) {
         var request = {
         query: queryCaptured,
         fields: ['photos', 'formatted_address', 'name', 'rating', 'opening_hours', 'geometry'],
+
         
 
     }
@@ -201,8 +204,8 @@ function googleMaps(queryCaptured) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
         for (var i = 0; i < results.length; i++) {
             var place = results[i];
-    
-            console.log(results[i]);
+           
+           console.log(results[i]);
         }
         }
         else{
