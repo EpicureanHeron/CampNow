@@ -256,23 +256,8 @@ function weather(lat, lon) {
             console.log(response, " is the weather");
             for (var i = 0; i < response.list.length; i++) {
                 if (i%8 === 0) {
-                var dayDiv = $("<div>")
-                var newP = $("<p>")
-                newP.html("Temp: " + response.list[i].main.temp)
-                dayDiv.append(newP)
-                
-                var newP = $("<p>")
-                newP.html("Wind Speed: " + response.list[i].wind.speed)
-                dayDiv.append(newP)
-
-                var newP = $("<p>")
-                newP.html("Humidity: " + response.list[i].main.humidity)
-                dayDiv.append(newP)
-
-                dayDiv.addClass("joePlaceHolder")
-
-                $("#displayParks").append(dayDiv)
-               // $("#displayParks").append("<div  id='temp'>" + response.list[i].main.temp + "</div><div id='wind'>" + response.list[i].wind.speed + "</div><div  id='humidity'>" + response.list[i].main.humidity + "</div>")
+          
+                 $("#displayParks").append("<div  id='temp'>" + response.list[i].main.temp + "</div><div id='wind'>" + response.list[i].wind.speed + "</div><div  id='humidity'>" + response.list[i].main.humidity + "</div>")
                 //$("#weather").append(weatherDisplay(response, i))
                 //console.log(weatherResponse(response, i))
                 //response.list[i].main.temp
