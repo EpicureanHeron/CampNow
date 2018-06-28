@@ -157,7 +157,7 @@ function getParksInfoByCode (parkCode) {
             for(i = 0; i < response.data.length; i ++){
                 var parksInfoDiv = $("<div>")
 
-                parksInfoDiv.addClass("joePlaceHolder")
+                parksInfoDiv.addClass("campSitePlaceHolder")
 
                 var parksInfoH2 = $("<h2>")
                 parksInfoH2.html(response.data[i].name)
@@ -168,10 +168,97 @@ function getParksInfoByCode (parkCode) {
                 parksInfoDiv.append(parksInfoP)
 
                 var parksInfoP = $("<p>")
-                parksInfoP.html(response.data[i].description)
+                parksInfoP.html(response.data[i].directionsOverview)
+                parksInfoDiv.append(parksInfoP)
+
+                var parksInfoP = $("<p>")
+                parksInfoP.html(response.data[i].weatherOverview)
                 parksInfoDiv.append(parksInfoP)
 
                 $("#campInfo").append(parksInfoDiv)
+                //internet
+                if(response.data[i].amenities.internetConnectivity) {
+                    var parksInfoP = $("<p>")
+                    parksInfoP.html("Internet is available")
+                    parksInfoDiv.append(parksInfoP)
+                }
+                else{
+                    var parksInfoP = $("<p>")
+                    parksInfoP.html("Internet is not available")
+                    parksInfoDiv.append(parksInfoP)
+                }
+                 //cellPhoneReceiption
+                 if(response.data[i].amenities.cellPhoneReception) {
+                    var parksInfoP = $("<p>")
+                    parksInfoP.html("There is some cell phone reception. ")
+                    parksInfoDiv.append(parksInfoP)
+                }
+                else{
+                    var parksInfoP = $("<p>")
+                    parksInfoP.html("There is no cell phone reception.")
+                    parksInfoDiv.append(parksInfoP)
+                }
+
+                //toilets
+                if(response.data[i].amenities.toilets[0] || response.data[i].amenities.toilets[0] !== ""){
+                    var parksInfoP = $("<p>")
+                    parksInfoP.html(response.data[i].amenities.toilets[0])
+                    parksInfoDiv.append(parksInfoP)
+                } else{
+                    var parksInfoP = $("<p>")
+                    parksInfoP.html("There are no public restrooms. ")
+                    parksInfoDiv.append(parksInfoP)
+                }
+                //showers
+                if(response.data[i].amenities.showers[0] && response.data[i].amenities.showers[0] !== "None"){
+                    var parksInfoP = $("<p>")
+                    parksInfoP.html(response.data[i].amenities.showers[0])
+                    parksInfoDiv.append(parksInfoP)
+                } else{
+                    var parksInfoP = $("<p>")
+                    parksInfoP.html("There are no showers.")
+                    parksInfoDiv.append(parksInfoP)
+                }
+                //potableWater
+                if(response.data[i].amenities.potableWater[0] || response.data[i].amenities.potableWater[0] !== ""){
+                    var parksInfoP = $("<p>")
+                    parksInfoP.html("Potable water: "+ response.data[i].amenities.showers[0])
+                    parksInfoDiv.append(parksInfoP)
+                } else{
+                    var parksInfoP = $("<p>")
+                    parksInfoP.html("There is no potable water information.")
+                    parksInfoDiv.append(parksInfoP)
+                }
+                //laundry
+                if(response.data[i].amenities.laundry) {
+                    var parksInfoP = $("<p>")
+                    parksInfoP.html("There is laundry available. ")
+                    parksInfoDiv.append(parksInfoP)
+                }
+                else{
+                    var parksInfoP = $("<p>")
+                    parksInfoP.html("There is no laundry available.")
+                    parksInfoDiv.append(parksInfoP)
+                }
+                //foodStorageLockers
+                if(response.data[i].amenities.foodStorageLockers[0] || response.data[i].amenities.foodStorageLockers[0] !== ""){
+                    var parksInfoP = $("<p>")
+                    parksInfoP.html("Food storage lockers: " + response.data[i].amenities.foodStorageLockers)
+                    parksInfoDiv.append(parksInfoP)
+                } else{
+                    var parksInfoP = $("<p>")
+                    parksInfoP.html("There is not information concerning food storage lockers")
+                    parksInfoDiv.append(parksInfoP)
+                }
+
+                
+
+                
+                
+               
+              
+                
+                //
 
 
                
@@ -273,9 +360,12 @@ function googleMaps(queryCaptured) {
            var newPhoto =  place.photos[0].getUrl({'maxWidth': 1000, 'maxHeight': 400})
           console.log(newPhoto)
           //console.log(place.photos[0])
+            var newDiv = $("<div>")
+            newDiv.addClass("campSitePlaceHolder")
             var newImg = $("<img>")
             newImg.attr("src", newPhoto)
-            $("#parksImg").append(newImg)
+            newDiv.append(newImg)
+            $("#parksImg").append(newDiv)
 
 
            ////END NEW CODE
