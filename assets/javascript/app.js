@@ -2,6 +2,8 @@
 
 //https://developer.nps.gov/api/v1/parks?stateCode=MN&api_key=N31BSTd4vcXAUWTFUb3FPdW4zBX1Jw3gVc5Sisw1
 
+var parkCodeToPass = ""
+var fullNameToPass = ""
 
 $(document).ready(function() {
     $("#submitButton").on("click", function(event) {
@@ -18,7 +20,7 @@ $(document).ready(function() {
 
     getParksByState(where)
  
-   // googleMaps(where)
+    
     });
 })
 
@@ -85,31 +87,46 @@ function getParksByState(locationQuery){
 
 $('body').on('click', '.clickable', function () {
 
-    var parkCodeToPass = $(this).attr("parkCode");
+    parkCodeToPass = $(this).attr("parkCode");
 
-    var fullNameToPass = $(this).attr("fullName");
+    fullNameToPass = $(this).attr("fullName");
+    
+    console.log("THIS IS THE FULL NAME TO PASS " + fullNameToPass)
 
     console.log(parkCodeToPass)
 
     $("#displayParks").empty()
-    
+    //THE BELOW FORMATS THE LAT AND LON FROM THE PARKS INFO TO BE PASSABLE TO THE WEATHER API
+    //PARKS INFO IS IN "LAT:XX.XXXX, LONG:XX.XXX" FORMAT
+    //WEATHERAPI IS EXPECTING TWO VARIABLES FORMATTED "LAT=XX.XXX" AND "LONG=XX.XXX"
+
     var latLong = $(this).attr("latLong")
+
     console.log(typeof latLong)
     console.log(latLong)
     var newLatLong = latLong.split(", ")
     console.log(newLatLong)
-    var emptyArr = [];
+    var latLongReformatted = [];
     for (i = 0; i < newLatLong.length; i ++){
         var newFormat = newLatLong[i].replace(":", "=");
         newFormat = newFormat.slice(0, 12)
-        emptyArr.push(newFormat)
+        latLongReformatted.push(newFormat)
     }
-    emptyArr[1] = emptyArr[1].replace("long", "lon");
-    console.log(emptyArr)
+    latLongReformatted[1] = latLongReformatted[1].replace("long", "lon");
+    console.log(latLongReformatted)
+
+
     //THREE AJAX CALLS
-  //  getParksInfoByCode(parkCodeToPass)
-    googleMaps(fullNameToPass)
-    weather(emptyArr[0], emptyArr[1])
+
+    //This gets the amenities info from the NPS API
+    
+    //Gets a picture from the Google Maps API
+    
+    //googleMaps(fullNameToPass)
+
+    //googleMaps(where)
+    //Returns weather info
+    weather(latLongReformatted[0], latLongReformatted[1])
 })
 
 function getParksInfoByCode (parkCode) {
@@ -133,13 +150,38 @@ function getParksInfoByCode (parkCode) {
         })
         //happens after the promise above is fullfilled
         .then(function(response) {
-            var info = response.data[0].amenities
-            console.log(info)
+           // var info = response.data[0].amenities
+            console.log("Below this should be the park info")
+            console.log(response)
+
+            for(i = 0; i < response.data.length; i ++){
+                var parksInfoDiv = $("<div>")
+
+                parksInfoDiv.addClass("joePlaceHolder")
+
+                var parksInfoH2 = $("<h2>")
+                parksInfoH2.html(response.data[i].name)
+                parksInfoDiv.append(parksInfoH2)
+
+                var parksInfoP = $("<p>")
+                parksInfoP.html(response.data[i].description)
+                parksInfoDiv.append(parksInfoP)
+
+                var parksInfoP = $("<p>")
+                parksInfoP.html(response.data[i].description)
+                parksInfoDiv.append(parksInfoP)
+
+                $("#campInfo").append(parksInfoDiv)
+
+
+               
+            }
+            googleMaps(fullNameToPass)
             //this creates an array of all the keys in the amenities object
             //Had to do it this way because not sure what will be returned by a certain key, seems to be limited to BOOLEAN or an ARRAY
             // var amenitiesArr = (Object.keys(info.amenities))
 
-           
+            
             // console.log(info.amenities.toilets)
             //     for (i = 0; i < amenitiesArr.length; i ++){
             //         var keyToTest = amenitiesArr[i] 
@@ -233,7 +275,7 @@ function googleMaps(queryCaptured) {
           //console.log(place.photos[0])
             var newImg = $("<img>")
             newImg.attr("src", newPhoto)
-            $("#displayParks").append(newImg)
+            $("#parksImg").append(newImg)
 
 
            ////END NEW CODE
@@ -282,6 +324,8 @@ function weather(lat, lon) {
             // <div id="temp"></div>
             // <div id="wind"></div>
             // <div id="humidity"></div> 
+
+            getParksInfoByCode(parkCodeToPass)
         })
 
     }
