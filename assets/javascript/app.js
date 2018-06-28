@@ -1,3 +1,9 @@
+//TO DOs
+//IF no LAT/LONG exists, do not trigger weather and say that the area is too big...perhaps runs the name of the park instead?
+//If no campgrounds exists, communicate as much
+//"reset" button which could bring them back to the state park page (runs the API for the NPS again based on their saved state info)
+//Add another "reset" button which pulls up the original fields on the page to search by state
+
 
 
 //https://developer.nps.gov/api/v1/parks?stateCode=MN&api_key=N31BSTd4vcXAUWTFUb3FPdW4zBX1Jw3gVc5Sisw1
@@ -5,10 +11,28 @@
 var parkCodeToPass = ""
 var fullNameToPass = ""
 
-$(document).ready(function() {
-    $("#submitButton").on("click", function(event) {
-        event.preventDefault();
+// $(document).ready(function() {
+//     $("#submitButton").on("click", function(event) {
+//         event.preventDefault();
        
+//     // This line of code will grab the input from the textbox
+//        var where = $("#where").val().trim();
+//         $('#buttonInput').val('');
+//     // The movie from the textbox is then added to our array
+//         console.log(where)
+//     // Calling renderButtons which handles the processing of our movie array
+//     $(".dateFieldWrap").empty()
+
+
+//     getParksByState(where)
+ 
+//     renderResetButton()
+//     });
+// })
+
+$('body').on('click', '#submitButton', function () {
+    event.preventDefault();
+       $("#resetButton").empty()
     // This line of code will grab the input from the textbox
        var where = $("#where").val().trim();
         $('#buttonInput').val('');
@@ -20,10 +44,26 @@ $(document).ready(function() {
 
     getParksByState(where)
  
-    
+    renderResetButton()
     });
-})
 
+function renderResetButton(){
+
+    var newButton = $("<button>")
+    newButton.addClass("resetButton")
+    newButton.html("Reset Your Trip")
+    $("#resetButton").append(newButton)
+}
+
+$('body').on('click', '.resetButton', function () {
+    $("#displayParks").empty()
+    $("#parksImg").empty()
+    $("#campInfo").empty()
+var newInput = $("<form> Which State do you want to camp in?: <input type='text' name='where' id='where'><br> <input type='submit' value='Submit' id='submitButton'> </form>")
+    $(".airShoppingDateFieldWrap").append(newInput)
+
+
+})
 
 
 
@@ -153,157 +193,121 @@ function getParksInfoByCode (parkCode) {
            // var info = response.data[0].amenities
             console.log("Below this should be the park info")
             console.log(response)
+            if(response.data.length > 0 ) {
+                for(i = 0; i < response.data.length; i ++){
+                    var parksInfoDiv = $("<div>")
 
-            for(i = 0; i < response.data.length; i ++){
+                    parksInfoDiv.addClass("campSitePlaceHolder")
+
+                    var parksInfoH2 = $("<h2>")
+                    parksInfoH2.html(response.data[i].name)
+                    parksInfoDiv.append(parksInfoH2)
+
+                    var parksInfoP = $("<p>")
+                    parksInfoP.html(response.data[i].description)
+                    parksInfoDiv.append(parksInfoP)
+
+                    var parksInfoP = $("<p>")
+                    parksInfoP.html(response.data[i].directionsOverview)
+                    parksInfoDiv.append(parksInfoP)
+
+                    var parksInfoP = $("<p>")
+                    parksInfoP.html(response.data[i].weatherOverview)
+                    parksInfoDiv.append(parksInfoP)
+
+                    $("#campInfo").append(parksInfoDiv)
+                    //internet
+                    if(response.data[i].amenities.internetConnectivity) {
+                        var parksInfoP = $("<p>")
+                        parksInfoP.html("Internet is available")
+                        parksInfoDiv.append(parksInfoP)
+                    }
+                    else{
+                        var parksInfoP = $("<p>")
+                        parksInfoP.html("Internet is not available")
+                        parksInfoDiv.append(parksInfoP)
+                    }
+                    //cellPhoneReceiption
+                    if(response.data[i].amenities.cellPhoneReception) {
+                        var parksInfoP = $("<p>")
+                        parksInfoP.html("There is some cell phone reception. ")
+                        parksInfoDiv.append(parksInfoP)
+                    }
+                    else{
+                        var parksInfoP = $("<p>")
+                        parksInfoP.html("There is no cell phone reception.")
+                        parksInfoDiv.append(parksInfoP)
+                    }
+
+                    //toilets
+                    if(response.data[i].amenities.toilets[0] || response.data[i].amenities.toilets[0] !== ""){
+                        var parksInfoP = $("<p>")
+                        parksInfoP.html(response.data[i].amenities.toilets[0])
+                        parksInfoDiv.append(parksInfoP)
+                    } else{
+                        var parksInfoP = $("<p>")
+                        parksInfoP.html("There are no public restrooms. ")
+                        parksInfoDiv.append(parksInfoP)
+                    }
+                    //showers
+                    if(response.data[i].amenities.showers[0] && response.data[i].amenities.showers[0] !== "None"){
+                        var parksInfoP = $("<p>")
+                        parksInfoP.html(response.data[i].amenities.showers[0])
+                        parksInfoDiv.append(parksInfoP)
+                    } else{
+                        var parksInfoP = $("<p>")
+                        parksInfoP.html("There are no showers.")
+                        parksInfoDiv.append(parksInfoP)
+                    }
+                    //potableWater
+                    if(response.data[i].amenities.potableWater[0] || response.data[i].amenities.potableWater[0] !== ""){
+                        var parksInfoP = $("<p>")
+                        parksInfoP.html("Potable water: "+ response.data[i].amenities.showers[0])
+                        parksInfoDiv.append(parksInfoP)
+                    } else{
+                        var parksInfoP = $("<p>")
+                        parksInfoP.html("There is no potable water information.")
+                        parksInfoDiv.append(parksInfoP)
+                    }
+                    //laundry
+                    if(response.data[i].amenities.laundry) {
+                        var parksInfoP = $("<p>")
+                        parksInfoP.html("There is laundry available. ")
+                        parksInfoDiv.append(parksInfoP)
+                    }
+                    else{
+                        var parksInfoP = $("<p>")
+                        parksInfoP.html("There is no laundry available.")
+                        parksInfoDiv.append(parksInfoP)
+                    }
+                    //foodStorageLockers
+                    if(response.data[i].amenities.foodStorageLockers[0] || response.data[i].amenities.foodStorageLockers[0] !== ""){
+                        var parksInfoP = $("<p>")
+                        parksInfoP.html("Food storage lockers: " + response.data[i].amenities.foodStorageLockers)
+                        parksInfoDiv.append(parksInfoP)
+                    } else{
+                        var parksInfoP = $("<p>")
+                        parksInfoP.html("There is not information concerning food storage lockers")
+                        parksInfoDiv.append(parksInfoP)
+                    }
+                //this line closes the for loop
+                }
+            //this line closes the IF statement
+            }
+            else{
                 var parksInfoDiv = $("<div>")
 
                 parksInfoDiv.addClass("campSitePlaceHolder")
 
                 var parksInfoH2 = $("<h2>")
-                parksInfoH2.html(response.data[i].name)
+                parksInfoH2.html("There are no parks for this location!")
                 parksInfoDiv.append(parksInfoH2)
-
-                var parksInfoP = $("<p>")
-                parksInfoP.html(response.data[i].description)
-                parksInfoDiv.append(parksInfoP)
-
-                var parksInfoP = $("<p>")
-                parksInfoP.html(response.data[i].directionsOverview)
-                parksInfoDiv.append(parksInfoP)
-
-                var parksInfoP = $("<p>")
-                parksInfoP.html(response.data[i].weatherOverview)
-                parksInfoDiv.append(parksInfoP)
-
                 $("#campInfo").append(parksInfoDiv)
-                //internet
-                if(response.data[i].amenities.internetConnectivity) {
-                    var parksInfoP = $("<p>")
-                    parksInfoP.html("Internet is available")
-                    parksInfoDiv.append(parksInfoP)
-                }
-                else{
-                    var parksInfoP = $("<p>")
-                    parksInfoP.html("Internet is not available")
-                    parksInfoDiv.append(parksInfoP)
-                }
-                 //cellPhoneReceiption
-                 if(response.data[i].amenities.cellPhoneReception) {
-                    var parksInfoP = $("<p>")
-                    parksInfoP.html("There is some cell phone reception. ")
-                    parksInfoDiv.append(parksInfoP)
-                }
-                else{
-                    var parksInfoP = $("<p>")
-                    parksInfoP.html("There is no cell phone reception.")
-                    parksInfoDiv.append(parksInfoP)
-                }
 
-                //toilets
-                if(response.data[i].amenities.toilets[0] || response.data[i].amenities.toilets[0] !== ""){
-                    var parksInfoP = $("<p>")
-                    parksInfoP.html(response.data[i].amenities.toilets[0])
-                    parksInfoDiv.append(parksInfoP)
-                } else{
-                    var parksInfoP = $("<p>")
-                    parksInfoP.html("There are no public restrooms. ")
-                    parksInfoDiv.append(parksInfoP)
-                }
-                //showers
-                if(response.data[i].amenities.showers[0] && response.data[i].amenities.showers[0] !== "None"){
-                    var parksInfoP = $("<p>")
-                    parksInfoP.html(response.data[i].amenities.showers[0])
-                    parksInfoDiv.append(parksInfoP)
-                } else{
-                    var parksInfoP = $("<p>")
-                    parksInfoP.html("There are no showers.")
-                    parksInfoDiv.append(parksInfoP)
-                }
-                //potableWater
-                if(response.data[i].amenities.potableWater[0] || response.data[i].amenities.potableWater[0] !== ""){
-                    var parksInfoP = $("<p>")
-                    parksInfoP.html("Potable water: "+ response.data[i].amenities.showers[0])
-                    parksInfoDiv.append(parksInfoP)
-                } else{
-                    var parksInfoP = $("<p>")
-                    parksInfoP.html("There is no potable water information.")
-                    parksInfoDiv.append(parksInfoP)
-                }
-                //laundry
-                if(response.data[i].amenities.laundry) {
-                    var parksInfoP = $("<p>")
-                    parksInfoP.html("There is laundry available. ")
-                    parksInfoDiv.append(parksInfoP)
-                }
-                else{
-                    var parksInfoP = $("<p>")
-                    parksInfoP.html("There is no laundry available.")
-                    parksInfoDiv.append(parksInfoP)
-                }
-                //foodStorageLockers
-                if(response.data[i].amenities.foodStorageLockers[0] || response.data[i].amenities.foodStorageLockers[0] !== ""){
-                    var parksInfoP = $("<p>")
-                    parksInfoP.html("Food storage lockers: " + response.data[i].amenities.foodStorageLockers)
-                    parksInfoDiv.append(parksInfoP)
-                } else{
-                    var parksInfoP = $("<p>")
-                    parksInfoP.html("There is not information concerning food storage lockers")
-                    parksInfoDiv.append(parksInfoP)
-                }
-
-                
-
-                
-                
-               
-              
-                
-                //
-
-
-               
             }
-            googleMaps(fullNameToPass)
-            //this creates an array of all the keys in the amenities object
-            //Had to do it this way because not sure what will be returned by a certain key, seems to be limited to BOOLEAN or an ARRAY
-            // var amenitiesArr = (Object.keys(info.amenities))
-
-            
-            // console.log(info.amenities.toilets)
-            //     for (i = 0; i < amenitiesArr.length; i ++){
-            //         var keyToTest = amenitiesArr[i] 
-            //         console.log(info.amenities.keyToTest)
-            //         if(info.amenities.keyToTest === undefined ) {
-            //             console.log(keyToTest)
-            //         }
-                    // else {
-                    //     if(typeof(response.data[0].amenities.amenitiesArr[i]) === "boolean"){
-                    //         var newP = $("<p>")
-                    //         newP.html(amenitiesArr[i] + " " + response.data[0].amenities.amenitiesArr[i])
-    
-                    //         $("#displayParks").append(newP)
-                    //     }
-                    //     else if(response.data[0].amenities.amenitiesArr[i].constructor === Array) {
-                    //         for (j; j < response.data[0].amenities.amenitiesArr[i].length; j ++ ){
-                    //         var newP = $("<p>")
-                    //         newP.html(amenitiesArr[i] + " " + response.data[0].amenities.amenitiesArr[i][j])
-    
-                    //         $("#displayParks").append(newP)
-    
-                    //         }      
-                    //     }
-    
-                    // }
-                // }
-
-               // newP.html(response.data[0].amenities.toilets)
-               
-              
-        //CLOSES THE THEN COMMAND
-            
-        });
-        //CLOSES THE FUNCTION
- }
+                googleMaps(fullNameToPass)  
+            });
+        }
 
 
 
@@ -390,8 +394,9 @@ function googleMaps(queryCaptured) {
 
 function weather(lat, lon) {  
     //Calling weather API
-    var APIkey = "33600f0073ced31aaa6969ba360fc0d0";
-    
+            var APIkey = "33600f0073ced31aaa6969ba360fc0d0";
+    //POSSIBILITY EXISTS THAT THE LAT AND LONG ARE NOT PASSED
+    //PUT IN AN IF THAT DOES THE FOLLOWING: if (typeof myVar != 'undefined')
       
         // var locationInput = $("").val().trim(); // <--- WHAT TO INPUT???? 
         // Use lat={lat}&lon={lon} for coordinates
