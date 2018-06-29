@@ -6,25 +6,20 @@
 $(document).ready(function() {
     $("#submitButton").on("click", function(event) {
         event.preventDefault();
-        
+       
     // This line of code will grab the input from the textbox
        var where = $("#where").val().trim();
         $('#buttonInput').val('');
     // The movie from the textbox is then added to our array
         console.log(where)
     // Calling renderButtons which handles the processing of our movie array
+    $(".dateFieldWrap").empty()
     getParksByState(where)
+ 
    // googleMaps(where)
     });
 })
 
-
-
-
-
-  
-  
-  //clears the gifs if there are some there
 
 
 
@@ -77,6 +72,8 @@ function getParksByState(locationQuery){
 
             newDiv.attr("fullName", response.data[i].fullName)
 
+            newDiv.attr("parkCode", response.data[i].parkCode)
+
             $("#displayParks").append(newDiv)
 
         }
@@ -99,24 +96,25 @@ $('body').on('click', '.clickable', function () {
     googleMaps(fullNameToPass);
 });
 
+
+// 2nd Page Park Click to get to Final Page
 $("#displayParks").on('click', function () {
 
     // new Div to display weather, site img and amenities
-    var ultScreen = $("<div>");
+    // var ultScreen = $("<div>");
     // 5 day weather display
-    var weatherDisp = $("<div>");
-    // site image
-    var campImg = $("<img>");
+    
+    
     // amenities info
     var amenities = $("<p>");
     // weather variable to display
-    // weatherDisp.html(response.data[i]., Precip, Wind);
+    
     // image of site from Google api
-    // campImg.html(response.data[i].image);
+    campImg.html(response.data[i].image);
     // information from NPS amenities api
     // amenities.html(response.data[i].data);
     // appending weatherDisp to ultScreen div
-    ultScreen.append(weatherDisp);
+    
     // appending site image to ultScreen div
     ultScreen.append(campImg);
     // appending amenities to ultScreen div
@@ -155,12 +153,13 @@ function googleMaps(queryCaptured) {
 
         console.log("initMap Triggered")
     
-        var queryToUse = "Grand Portage"
+        console.log(queryCaptured)
 
-        console.log(queryToUse)
+        //console.log(queryToUse)
         var request = {
-        query: queryToUse,
+        query: queryCaptured,
         fields: ['photos', 'formatted_address', 'name', 'rating', 'opening_hours', 'geometry'],
+
         
 
     }
@@ -175,16 +174,63 @@ function googleMaps(queryCaptured) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
         for (var i = 0; i < results.length; i++) {
             var place = results[i];
-    
-            console.log(results[i]);
+           
+           console.log(results[i]);
+           
         }
+       // console.log(photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35}))
         }
         else{
             console.log("NOPE THE MAPS THING DID NOT WORK")
         }
     }
+
+
+    
     initMap()
     //closes the window on load function
     // }
 
 }
+
+function weather(lat, lon) {  
+    //Calling weather API
+    var APIkey = "33600f0073ced31aaa6969ba360fc0d0";
+    
+    
+        // var locationInput = $("").val().trim(); // <--- WHAT TO INPUT???? 
+        // Use lat={lat}&lon={lon} for coordinates
+        var QueryURL ="https://api.openweathermap.org/data/2.5/forecast?" + lat + "&" + lon  + "&units=imperial&appid=" + APIkey;
+        $.ajax({
+            url: QueryURL,
+            method: 'GET'
+        }).then(function(response){
+            console.log(response, " is the weather");
+            for (var i = 0; i < response.list.length; i++) {
+                if (i%8 === 0) {
+                    var temp = $("<div>");
+                    var windSpeed = $("<h3>");
+                    var humidity = $("<h3>");
+
+                // $("#weather").append("<div id='temp'>" + response.list[i].main.temp + "</div><div id='wind'>" + response.list[i].wind.speed + "</div><div id='humidity'>" + response.list[i].main.humidity + "</div>")
+                //$("#weather").append(weatherDisplay(response, i))
+                //console.log(weatherResponse(response, i))
+                response.list[i].main.temp
+                }
+            }
+            // variable to create Weather Forecast display
+            var weatherDisp = $("<div>");
+            var weatherData = ("Weather: "+ result.weather[0].main);
+        });
+
+            // store API call data in the new div
+            weatherDisp.html(response.data[i].Temperature, Humidity, WindSpeed);// <div id="temp"></div>
+            weatherDisp.addClass("weather-display");
+            $("<div>").append(weatherDisp);
+
+            // <div id="wind"></div>
+            // <div id="humidity"></div> 
+        })
+
+    }
+    
