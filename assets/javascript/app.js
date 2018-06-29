@@ -10,29 +10,29 @@
 
 var parkCodeToPass = ""
 var fullNameToPass = ""
+var stateArr = [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY' ];
+
 
 $(document).ready(function() {
    
 
     $("#submitButton").on("click", function(event) {
         event.preventDefault();
+        $("#weather").empty()
+        $("#displayParks").empty()
+        $("#parksImg").empty()
+        $("#campInfo").empty()
 
-
-        //call modal
-
-    
-
-        
-    // This line of code will grab the input from the textbox
-       var where = $("#where").val().trim();
+        var where = $("#where").val().trim();
         $('#buttonInput').val('');
-    // The movie from the textbox is then added to our array
+
         console.log(where)
-    // Calling renderButtons which handles the processing of our movie array
-    if(where.length === 2) {
+  
+        if((where.length === 2) && ($.inArray(where, stateArr)) != -1) {
         getParksByState(where)
-        renderResetButton()
+       
     }
+    
     else{
         console.log("Modal should Appear")
         $('#myModal').modal('show')
@@ -44,31 +44,7 @@ $(document).ready(function() {
     });
 })
 
-
-function renderResetButton(){
-
-    var newButton = $("<button>")
-    newButton.addClass("resetButton")
-    newButton.html("Reset Your Trip")
-    $("#resetButton").append(newButton)
-}
-
-$('body').on('click', '.resetButton', function () {
-    $("#displayParks").empty()
-    $("#parksImg").empty()
-    $("#campInfo").empty()
-var newInput = $("<form> Which State do you want to camp in?: <input type='text' name='where' id='where'><br> <input type='submit' value='Submit' id='submitButton'> </form>")
-    $(".airShoppingDateFieldWrap").append(newInput)
-
-
-})
-
-
-
-  
-//this is the jquery ajax call
 function getParksByState(locationQuery){
-
     
     var parksBaseURL = "https://developer.nps.gov/api/v1/parks?";
 
@@ -83,12 +59,12 @@ function getParksByState(locationQuery){
 
 
     $.ajax({
-    //takes the URL which is our queryURL
+    
     url: parksAJAX,
-    //magic method of GET (something something SERVER HTTP STUFF something something)
+    
     method: "GET"
     })
-    //happens after the promise above is fullfilled
+  
     .then(function(response) {
         
          console.log(response)
@@ -415,7 +391,7 @@ function weather(lat, lon) {
                 var weatherDisp = $("<div>")
 
                 var weatherP = $("<p>")
-                weatherP.html("Date: " + response.list[i].dt_txt)
+                weatherP.html("Date: " + response.list[i].dt_txt.slice(0,10))
                 weatherDisp.append(weatherP)
 
 

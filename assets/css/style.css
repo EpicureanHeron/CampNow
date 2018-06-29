@@ -64,11 +64,11 @@ body {
   .weather {
     float: left;
     height: 250px;
-    width: 110px;
+    width: 210px;
     margin: 5px;
     border: 1px solid blue;
     background-color: lightblue;
-    opacity: 0.5;
+    opacity: 0.9;
     padding: 5px;
   } 
 
