@@ -16,7 +16,7 @@ $(document).ready(function() {
         var where = $("#where").val().trim();
         $('#buttonInput').val('');
 
-        console.log(where)
+        
   
         if((where.length === 2) && ($.inArray(where, stateArr)) != -1) {
         getParksByState(where)
@@ -24,7 +24,7 @@ $(document).ready(function() {
     }
     
     else{
-        console.log("Modal should Appear")
+       
         $('#myModal').modal('show')
     }
 
@@ -44,7 +44,7 @@ function getParksByState(locationQuery){
 
     var parksAJAX = parksBaseURL + parksStateCode + locationQuery + parksAPIKey ;
 
-    console.log(parksAJAX);
+    
 
 
 
@@ -57,7 +57,7 @@ function getParksByState(locationQuery){
   
     .then(function(response) {
         
-         console.log(response)
+       
         for(i = 0; i < response.data.length; i ++){
 
             var newDiv = $("<div>");
@@ -94,10 +94,6 @@ $('body').on('click', '.clickable', function () {
     parkCodeToPass = $(this).attr("parkCode");
 
     fullNameToPass = $(this).attr("fullName");
-    
-    console.log("THIS IS THE FULL NAME TO PASS " + fullNameToPass)
-
-    console.log(parkCodeToPass)
 
     $("#displayParks").empty()
 
@@ -108,10 +104,9 @@ $('body').on('click', '.clickable', function () {
 
     var latLong = $(this).attr("latLong")
 
-    console.log(typeof latLong)
-    console.log(latLong)
+    
     var newLatLong = latLong.split(", ")
-    console.log(newLatLong)
+   
     var latLongReformatted = [];
     for (i = 0; i < newLatLong.length; i ++){
         var newFormat = newLatLong[i].replace(":", "=");
@@ -119,7 +114,7 @@ $('body').on('click', '.clickable', function () {
         latLongReformatted.push(newFormat)
     }
     latLongReformatted[1] = latLongReformatted[1].replace("long", "lon");
-    console.log(latLongReformatted)
+   
 
     weather(latLongReformatted[0], latLongReformatted[1])
 })
@@ -135,7 +130,7 @@ function getParksInfoByCode (parkCode) {
 
     var parksAJAX = parksCampBaseURL + parksCampQuery + parkCode + parksAPIKey ;
 
-    console.log(parksAJAX)
+   
 
     $.ajax({
         //takes the URL which is our queryURL
@@ -146,8 +141,7 @@ function getParksInfoByCode (parkCode) {
         //happens after the promise above is fullfilled
         .then(function(response) {
            // var info = response.data[0].amenities
-            console.log("Below this should be the park info")
-            console.log(response)
+  
             if(response.data.length > 0 ) {
                 for(i = 0; i < response.data.length; i ++){
                     var parksInfoDiv = $("<div>")
@@ -283,18 +277,9 @@ function googleMaps(queryCaptured) {
     var infowindow;
     
     function initMap() {
-
-        console.log("initMap Triggered")
-    
-        console.log(queryCaptured)
-
-        //console.log(queryToUse)
         var request = {
         query: queryCaptured,
         fields: ['photos', 'formatted_address', 'name', 'rating', 'opening_hours', 'geometry'],
-
-        
-
     }
     service = new google.maps.places.PlacesService(document.createElement("div"));
     service.findPlaceFromQuery(request, callback);
@@ -302,8 +287,7 @@ function googleMaps(queryCaptured) {
 
     
     function callback(results, status) {
-        console.log("callback Triggered")
-        console.log()
+ 
         if (status == google.maps.places.PlacesServiceStatus.OK) {
             for (var i = 0; i < results.length; i++) {
 
@@ -332,12 +316,12 @@ function weather(lat, lon) {
         var APIkey = "33600f0073ced31aaa6969ba360fc0d0";
     
         var QueryURL ="https://api.openweathermap.org/data/2.5/forecast?" + lat + "&" + lon  + "&units=imperial&appid=" + APIkey;
-        console.log(QueryURL )
+   
         $.ajax({
             url: QueryURL,
             method: 'GET'
         }).then(function(response){
-            console.log(response, " is the weather");
+         
             for (var i = 0; i < response.list.length; i++) {
                 if (i%8 === 0) {
           
