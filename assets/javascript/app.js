@@ -397,9 +397,7 @@ function weather(lat, lon) {
             var APIkey = "33600f0073ced31aaa6969ba360fc0d0";
     //POSSIBILITY EXISTS THAT THE LAT AND LONG ARE NOT PASSED
     //PUT IN AN IF THAT DOES THE FOLLOWING: if (typeof myVar != 'undefined')
-      
-        // var locationInput = $("").val().trim(); // <--- WHAT TO INPUT???? 
-        // Use lat={lat}&lon={lon} for coordinates
+   
         var QueryURL ="https://api.openweathermap.org/data/2.5/forecast?" + lat + "&" + lon  + "&units=imperial&appid=" + APIkey;
         console.log(QueryURL )
         $.ajax({
@@ -410,10 +408,6 @@ function weather(lat, lon) {
             for (var i = 0; i < response.list.length; i++) {
                 if (i%8 === 0) {
           
-                //  $("#displayParks").append("<div  id='temp'>" + response.list[i].main.temp + "</div><div id='wind'>" + response.list[i].wind.speed + "</div><div  id='humidity'>" + response.list[i].main.humidity + "</div>")
-                //$("#weather").append(weatherDisplay(response, i))
-                //console.log(weatherResponse(response, i))
-                //response.list[i].main.temp
                 var weatherDisp = $("<div>")
 
                 var weatherP = $("<p>")
@@ -443,10 +437,6 @@ function weather(lat, lon) {
 
                 weatherDisp.addClass("weather");
                 $("#weather").append(weatherDisp);
-                // var weatherInput = (response.list[i].main.temp + response.list[i].wind.speed + response.list[i].main.humidity
-                // <div id="temp"></div>
-                
-                // <div id="wind"></div>
                 
                 }
             }
