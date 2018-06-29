@@ -410,15 +410,45 @@ function weather(lat, lon) {
             for (var i = 0; i < response.list.length; i++) {
                 if (i%8 === 0) {
           
-                 $("#displayParks").append("<div  id='temp'>" + response.list[i].main.temp + "</div><div id='wind'>" + response.list[i].wind.speed + "</div><div  id='humidity'>" + response.list[i].main.humidity + "</div>")
+                //  $("#displayParks").append("<div  id='temp'>" + response.list[i].main.temp + "</div><div id='wind'>" + response.list[i].wind.speed + "</div><div  id='humidity'>" + response.list[i].main.humidity + "</div>")
                 //$("#weather").append(weatherDisplay(response, i))
                 //console.log(weatherResponse(response, i))
                 //response.list[i].main.temp
+                var weatherDisp = $("<div>")
+
+                var weatherP = $("<p>")
+                weatherP.html("Date: " + response.list[i].dt_txt)
+                weatherDisp.append(weatherP)
+
+
+                var weatherP = $("<p>")
+                weatherP.html("Temperature: " + response.list[i].main.temp)
+                weatherDisp.append(weatherP)
+
+                   
+
+                var weatherP = $("<p>")
+                weatherP.html("Wind Speed: " + response.list[i].wind.speed)
+                weatherDisp.append(weatherP)
+
+
+                var weatherP = $("<p>")
+                weatherP.html("Humidity: " + response.list[i].main.humidity)
+                weatherDisp.append(weatherP)
+               
+
+                var weatherP = $("<p>")
+                weatherP.html("Description: " + response.list[i].weather[0].description)
+                weatherDisp.append(weatherP)
+
+                $("#weather").append(weatherDisp);
+                // var weatherInput = (response.list[i].main.temp + response.list[i].wind.speed + response.list[i].main.humidity
+                // <div id="temp"></div>
+                
+                // <div id="wind"></div>
+                
                 }
             }
-            // <div id="temp"></div>
-            // <div id="wind"></div>
-            // <div id="humidity"></div> 
 
             getParksInfoByCode(parkCodeToPass)
         })

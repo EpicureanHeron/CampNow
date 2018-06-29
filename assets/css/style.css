@@ -40,13 +40,17 @@ body {
     padding: 5px;
 }
 
-<<<<<<< HEAD
-.weather-display {
-    display: inline-block;
-    width: 100%;
+.joePlaceHolder {
+    float: left;
     height: 300px;
-    background-color: red;
-=======
+    width: 300px;
+    margin: 10px;
+    border: 1px solid black;
+    background-color: white;
+    opacity: 0.8;
+    padding: 5px;
+}
+
 .campSitePlaceHolder{
  width: 100%;
  height: auto;
@@ -64,5 +68,4 @@ body {
     width: 100px;
     height: 50px;
     
->>>>>>> a198f4f941e9e9643db0ec4e2353cc0f1d828e6d
 }
