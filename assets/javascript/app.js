@@ -1,4 +1,3 @@
-
 //TO DOs
 //IF no LAT/LONG exists, do not trigger weather and say that the area is too big...perhaps runs the name of the park instead?
 //If no campgrounds exists, communicate as much
@@ -12,6 +11,24 @@
 var parkCodeToPass = ""
 var fullNameToPass = ""
 
+// $(document).ready(function() {
+//     $("#submitButton").on("click", function(event) {
+//         event.preventDefault();
+       
+//     // This line of code will grab the input from the textbox
+//        var where = $("#where").val().trim();
+//         $('#buttonInput').val('');
+//     // The movie from the textbox is then added to our array
+//         console.log(where)
+//     // Calling renderButtons which handles the processing of our movie array
+//     $(".dateFieldWrap").empty()
+
+
+//     getParksByState(where)
+ 
+//     renderResetButton()
+//     });
+// })
 
 $('body').on('click', '#submitButton', function () {
     event.preventDefault();
@@ -377,7 +394,7 @@ function googleMaps(queryCaptured) {
 
 function weather(lat, lon) {  
     //Calling weather API
-        var APIkey = "33600f0073ced31aaa6969ba360fc0d0";
+            var APIkey = "33600f0073ced31aaa6969ba360fc0d0";
     //POSSIBILITY EXISTS THAT THE LAT AND LONG ARE NOT PASSED
     //PUT IN AN IF THAT DOES THE FOLLOWING: if (typeof myVar != 'undefined')
       
@@ -393,14 +410,47 @@ function weather(lat, lon) {
             for (var i = 0; i < response.list.length; i++) {
                 if (i%8 === 0) {
           
-                 $("#weather-card-1").append("<div  id='temp'>" + "TEMP: " + response.list[i].main.temp + "</div><div id='wind'>" + "WIND MPH: " + response.list[i].wind.speed + "</div><div  id='humidity'>" + "HUMIDITY: " + response.list[i].main.humidity + "</div>")
-                 $("#weather-card-2").append("<div  id='temp'>" + "TEMP: " + response.list[i].main.temp + "</div><div id='wind'>" + "WIND MPH: " + response.list[i].wind.speed + "</div><div  id='humidity'>" + "HUMIDITY: " + response.list[i].main.humidity + "</div>")
-                 $("#weather-card-3").append("<div  id='temp'>" + "TEMP: " + response.list[i].main.temp + "</div><div id='wind'>" + "WIND MPH: " + response.list[i].wind.speed + "</div><div  id='humidity'>" + "HUMIDITY: " + response.list[i].main.humidity + "</div>")
-                 $("#weather-card-4").append("<div  id='temp'>" + "TEMP: " + response.list[i].main.temp + "</div><div id='wind'>" + "WIND MPH: " + response.list[i].wind.speed + "</div><div  id='humidity'>" + "HUMIDITY: " + response.list[i].main.humidity + "</div>")
-                 $("#weather-card-5").append("<div  id='temp'>" + "TEMP: " + response.list[i].main.temp + "</div><div id='wind'>" + "WIND MPH: " + response.list[i].wind.speed + "</div><div  id='humidity'>" + "HUMIDITY: " + response.list[i].main.humidity + "</div>")
+                //  $("#displayParks").append("<div  id='temp'>" + response.list[i].main.temp + "</div><div id='wind'>" + response.list[i].wind.speed + "</div><div  id='humidity'>" + response.list[i].main.humidity + "</div>")
+                //$("#weather").append(weatherDisplay(response, i))
+                //console.log(weatherResponse(response, i))
+                //response.list[i].main.temp
+                var weatherDisp = $("<div>")
+
+                var weatherP = $("<p>")
+                weatherP.html("Date: " + response.list[i].dt_txt)
+                weatherDisp.append(weatherP)
+
+
+                var weatherP = $("<p>")
+                weatherP.html("Temperature: " + response.list[i].main.temp)
+                weatherDisp.append(weatherP)
+
+                   
+
+                var weatherP = $("<p>")
+                weatherP.html("Wind Speed: " + response.list[i].wind.speed)
+                weatherDisp.append(weatherP)
+
+
+                var weatherP = $("<p>")
+                weatherP.html("Humidity: " + response.list[i].main.humidity)
+                weatherDisp.append(weatherP)
+               
+
+                var weatherP = $("<p>")
+                weatherP.html("Description: " + response.list[i].weather[0].description)
+                weatherDisp.append(weatherP)
+
+                weatherDisp.addClass("weather");
+                $("#weather").append(weatherDisp);
+                // var weatherInput = (response.list[i].main.temp + response.list[i].wind.speed + response.list[i].main.humidity
+                // <div id="temp"></div>
+                
+                // <div id="wind"></div>
+                
                 }
             }
-           
+
             getParksInfoByCode(parkCodeToPass)
         })
 
