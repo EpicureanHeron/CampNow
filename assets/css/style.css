@@ -60,3 +60,23 @@ body {
     font-size: 22px;
 
   } 
+
+  .weather {
+    float: left;
+    height: 250px;
+    width: 110px;
+    margin: 5px;
+    border: 1px solid blue;
+    background-color: lightblue;
+    opacity: 0.5;
+    padding: 5px;
+  } 
+
+  .clearfix {
+    overflow: auto;
+  }
+
+  #weather-container {
+    margin-top: 250;
+    margin-left: 140;
+}

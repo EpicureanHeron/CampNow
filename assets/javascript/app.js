@@ -439,7 +439,7 @@ function weather(lat, lon) {
                 weatherP.html("Description: " + response.list[i].weather[0].description)
                 weatherDisp.append(weatherP)
                 
-                weatherDisp.css('display','inline-block')
+                weatherDisp.addClass("weather")
                 
                 $("#weather").append(weatherDisp)
                 // var weatherInput = (response.list[i].main.temp + response.list[i].wind.speed + response.list[i].main.humidity
