@@ -40,9 +40,29 @@ body {
     padding: 5px;
 }
 
+<<<<<<< HEAD
 .weather-display {
     display: inline-block;
     width: 100%;
     height: 300px;
     background-color: red;
+=======
+.campSitePlaceHolder{
+ width: 100%;
+ height: auto;
+ opacity: 0.8;
+ border: 1px solid black;
+ background-color: white;
+ margin: 10px;
+ padding: 5px;
+ text-align: center;
+
+}
+
+.resetButton{
+    text-align: center;
+    width: 100px;
+    height: 50px;
+    
+>>>>>>> a198f4f941e9e9643db0ec4e2353cc0f1d828e6d
 }
