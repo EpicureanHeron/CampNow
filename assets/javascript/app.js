@@ -11,28 +11,35 @@
 var parkCodeToPass = ""
 var fullNameToPass = ""
 
-// $(document).ready(function() {
-//     $("#submitButton").on("click", function(event) {
-//         event.preventDefault();
-       
-//     // This line of code will grab the input from the textbox
-//        var where = $("#where").val().trim();
-//         $('#buttonInput').val('');
-//     // The movie from the textbox is then added to our array
-//         console.log(where)
-//     // Calling renderButtons which handles the processing of our movie array
-//     $(".dateFieldWrap").empty()
+$(document).ready(function() {
+    $("#submitButton").on("click", function(event) {
+        event.preventDefault();
 
 
-//     getParksByState(where)
- 
-//     renderResetButton()
-//     });
-// })
+        //call modal
 
-$('body').on('click', '#submitButton', function () {
-    event.preventDefault();
-       $("#resetButton").empty()
+     
+// Modal alert trigger logic
+// If dates are withing 5 days, modal will not trigger
+var departureDate = $("#departureDate").val()
+console.log(departureDate)
+
+// If dates exceed 5 day Trigger Modal
+
+var day = moment().diff(departureDate, 'day')
+console.log(day)
+
+//logic for date out to far
+
+if (day < -6) {
+    $('#calendarAlert').modal()
+    
+}
+
+
+
+
+        
     // This line of code will grab the input from the textbox
        var where = $("#where").val().trim();
         $('#buttonInput').val('');
@@ -46,6 +53,8 @@ $('body').on('click', '#submitButton', function () {
  
     renderResetButton()
     });
+})
+
 
 function renderResetButton(){
 

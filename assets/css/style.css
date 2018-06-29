@@ -1,20 +1,28 @@
 body {
+    
     background-image: url("../images/background.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
     height: 960px;
 }
 
+/*p {
+    margin: 0px 0px 0px 100px;
+}*/
+
 #input {
-    margin-top: 8%;
+    margin: 0px 0px 0px 100px;
+    /*margin-top: 8%;*/
     margin-left: 10%;
 }
 
 .activities {
+    margin: 0px 0px 0px 100px;
     line-height: 20px;
 }
 
 .form-check {
+    margin: 0px 0px 0px 200px;
     font-weight: bold;
 }
 
