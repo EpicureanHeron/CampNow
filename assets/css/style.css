@@ -10,10 +10,15 @@ body {
     margin: 0px 0px 0px 100px;
 }*/
 
+/*h4 {
+    flood-color: rgb(49, 34, 77);
+}*/
+
 #input {
-    margin: 0px 0px 0px 100px;
+    /*margin: 0px 0px 0px 100px;*/
     /*margin-top: 8%;*/
     margin-left: 10%;
+    
 }
 
 .activities {
@@ -26,7 +31,13 @@ body {
     font-weight: bold;
 }
 
+b {
+ font-size: 28px;
+
+}
+
 .jumbotron {
+   
     margin-bottom: 0px;
     /* background-image: url(../img/jumbotronbackground.jpg); */
     background-position: 0% 25%;
@@ -34,10 +45,18 @@ body {
     background-repeat: no-repeat;
     color: rgb(32, 100, 36);
     /* text-shadow: black 0.3em 0.3em 0.3em; */
+    
 }
 
+ /*.logo {
+
+   /*float: center;*/
+ /*   margin-left: auto;
+    margin-right: auto;
+} */
+
 .joePlaceHolder {
-    float: left;
+    float: center;
     height: 300px;
     width: 300px;
     margin: 10px;
@@ -65,3 +84,22 @@ body {
     height: 50px;
     
 }
+
+.box { 
+
+    /*float: right;*/
+    margin-right: auto;
+    margin-left: auto;
+    width: 700px;
+    height: 90px;
+    /*margin: 45px 0px 90px 430px;*/
+    /*font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+    font-weight: strong;
+    color: rgb(5, 4, 10);*/
+    padding: 5px 5px 5px 5px;
+    border-style: solid;
+    border-width: 5px;
+    background-color: rgba(245, 245, 139, 0.3);
+    border-color:#4b535e;
+
+  } 

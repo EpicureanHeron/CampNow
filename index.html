@@ -17,21 +17,28 @@
     	
     </head>
     <body>
-      <div class="container"></div>
-            <div class="row">
-                <div class="col-md-12">
-                  <div class="jumbotron">
-                     <!--  <img width="250" src="assets/images/Logo2.jpg" alt="Camp Now"> -->
-                       <h1 class="display-1">Find your next Camping Spot...</h1>
-                       <!-- <h1><img width="350" src="assets/images/Logo2.jpg" alt="logo" /> Camp Now<br>Find your next camping spot!</h1>-->
-                        
-                        
-                    
-                <!--closes col-->
-                </div>
-            <!--closes row-->
-            </div>
+            <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="jumbotron" id="displayParks">
+                                <h1 class="display-1">Find your next Camping Spot...</h1>
+                                <!--<h4 class="head-text">Logo: Camp Now</h4>-->
+                            </div>
+                        <!--closes col-->
+                        </div>
+                    <!--closes row-->
+                    </div>
 
+            <!--  <div class="logo">  -->
+                    <div class="row">
+                            <div class="col-md-4"></div>
+                    <div class="col-md-5">
+                <img width="400" src="assets/images/Logo2.jpg" alt="Camp Now">  
+            <div class="col-md-3">
+
+            </div>
+         </div>
+>
         <div class="row">
             <div class="col-md-12">
                 <div id="resetButton"></div>
@@ -46,18 +53,25 @@
                 
                     <div class="dateFieldWrap airShoppingDateFieldWrap">
                             <div class="search-left-cell">
-                            <div> <label for="departureDate" >Depart Date</label></div>
+                           <!-- <div> <label for="departureDate" >Depart Date</label></div>-->
                                 <div class="inputWrap">
-                 <form>
 
-                        <img width="350" src="assets/images/Logo2.jpg" alt="Camp Now"> <br>
+                                        
+
+
+
+                 <form>
+            
+            <div class="box">
+                
             <b>Which State do you want to camp in?:</b> <input type="text" name="where" id="where"><br>
             <!-- Start: <input type="date" name="traveldate">
             End: <input type="date" name="traveldate"><br> -->
 
-
+            
+        </div>
          
-                        <input type="date" name="departureDate" maxlength="10" value="" id="departureDate" class="search-txt-field-Cal depart" autocomplete="off" aria-describedby="departDisc" aria-required="true" aria-haspopup="true" aria-invalid="false" placeholder="mm/dd/yyyy"/>
+                   <!--     <input type="date" name="departureDate" maxlength="10" value="" id="departureDate" class="search-txt-field-Cal depart" autocomplete="off" aria-describedby="departDisc" aria-required="true" aria-haspopup="true" aria-invalid="false" placeholder="mm/dd/yyyy"/>
                         <span id="departDisc" class="aria-offscreen">Select Depart Date</span>
                         <span class="calendarClickIcon" id="depDateCalIcon"></span> </div>
                 </div>
@@ -70,8 +84,9 @@
                         <span class="calendarClickIcon" id="retDateCalIcon"></span> </div>
                 </div>
             </div>
+            
 
-               <!-- Insert Modal -->
+               Insert Modal -->
                 <!-- Button trigger modal
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
     Check your dates!
@@ -99,7 +114,7 @@
   </div>
 
 
-                <div class="form-check">
+              <!--  <div class="form-check">
                         <input type="checkbox" name="activity" value="Camping"> Camping<br>
                         <input type="checkbox" name="activity" value="Hiking"> Hiking<br>
                         <input type="checkbox" name="activity" value="Kayaking"> Kayaking<br>
@@ -109,11 +124,13 @@
                       
                 <input type="submit" value="Submit" id="submitButton">
 
-                <!-- Enter Dates - pop up Calendar -->
+                Enter Dates - pop up Calendar -->
                 <!-- Beginning and ending date -->
                 <!-- Desired Activity - Drop down - Array - Ask Joe about NPS listed activities -->
 
                 <!-- Return Info: Parks / Weather Info / Activities -->
+
+                </div>
 
               </form>
 
