@@ -440,8 +440,10 @@ function weather(lat, lon) {
                 var weatherP = $("<p>")
                 weatherP.html("Description: " + response.list[i].weather[0].description)
                 weatherDisp.append(weatherP)
-
-                $("#weather").append(weatherDisp);
+                
+                weatherDisp.css('display','inline-block')
+                
+                $("#weather").append(weatherDisp)
                 // var weatherInput = (response.list[i].main.temp + response.list[i].wind.speed + response.list[i].main.humidity
                 // <div id="temp"></div>
                 
