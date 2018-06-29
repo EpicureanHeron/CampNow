@@ -1,13 +1,3 @@
-//TO DOs
-//IF no LAT/LONG exists, do not trigger weather and say that the area is too big...perhaps runs the name of the park instead?
-//If no campgrounds exists, communicate as much
-//"reset" button which could bring them back to the state park page (runs the API for the NPS again based on their saved state info)
-//Add another "reset" button which pulls up the original fields on the page to search by state
-
-
-
-//https://developer.nps.gov/api/v1/parks?stateCode=MN&api_key=N31BSTd4vcXAUWTFUb3FPdW4zBX1Jw3gVc5Sisw1
-
 var parkCodeToPass = ""
 var fullNameToPass = ""
 var stateArr = [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY' ];
@@ -110,6 +100,8 @@ $('body').on('click', '.clickable', function () {
     console.log(parkCodeToPass)
 
     $("#displayParks").empty()
+
+
     //THE BELOW FORMATS THE LAT AND LON FROM THE PARKS INFO TO BE PASSABLE TO THE WEATHER API
     //PARKS INFO IS IN "LAT:XX.XXXX, LONG:XX.XXX" FORMAT
     //WEATHERAPI IS EXPECTING TWO VARIABLES FORMATTED "LAT=XX.XXX" AND "LONG=XX.XXX"
@@ -129,17 +121,6 @@ $('body').on('click', '.clickable', function () {
     latLongReformatted[1] = latLongReformatted[1].replace("long", "lon");
     console.log(latLongReformatted)
 
-
-    //THREE AJAX CALLS
-
-    //This gets the amenities info from the NPS API
-    
-    //Gets a picture from the Google Maps API
-    
-    //googleMaps(fullNameToPass)
-
-    //googleMaps(where)
-    //Returns weather info
     weather(latLongReformatted[0], latLongReformatted[1])
 })
 
@@ -294,11 +275,9 @@ function getParksInfoByCode (parkCode) {
 
 
 
-/////////////
+
 function googleMaps(queryCaptured) {
     
-    ///////GOOGLE MAPS STUFF///////
-    // window.onload = function() {
     var map;
     var service;
     var infowindow;
@@ -326,54 +305,32 @@ function googleMaps(queryCaptured) {
         console.log("callback Triggered")
         console.log()
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-        for (var i = 0; i < results.length; i++) {
+            for (var i = 0; i < results.length; i++) {
 
-            var place = results[i];
-           
-           console.log(place);
+                var place = results[i];
+            
+                var newPhoto =  place.photos[0].getUrl({'maxWidth': 1000, 'maxHeight': 400})
+            
 
+                var newDiv = $("<div>")
+                newDiv.addClass("campSitePlaceHolder")
+                var newImg = $("<img>")
+                newImg.attr("src", newPhoto)
+                newDiv.append(newImg)
+                $("#parksImg").append(newDiv)
+
+            }
+     
+        }
         
-           ///NEW CODE
-           //THIS WORKS!
-           var newPhoto =  place.photos[0].getUrl({'maxWidth': 1000, 'maxHeight': 400})
-          console.log(newPhoto)
-          //console.log(place.photos[0])
-            var newDiv = $("<div>")
-            newDiv.addClass("campSitePlaceHolder")
-            var newImg = $("<img>")
-            newImg.attr("src", newPhoto)
-            newDiv.append(newImg)
-            $("#parksImg").append(newDiv)
-
-
-           ////END NEW CODE
-           
-        }
-       // console.log(photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35}))
-        }
-        else{
-            console.log("NOPE THE MAPS THING DID NOT WORK")
-        }
-    }
-
-
-    
+    }  
     initMap()
-    //closes the window on load function
-    // }
-
-
-
 }
 
 function weather(lat, lon) {  
-    //Calling weather API
-            var APIkey = "33600f0073ced31aaa6969ba360fc0d0";
-    //POSSIBILITY EXISTS THAT THE LAT AND LONG ARE NOT PASSED
-    //PUT IN AN IF THAT DOES THE FOLLOWING: if (typeof myVar != 'undefined')
-      
-        // var locationInput = $("").val().trim(); // <--- WHAT TO INPUT???? 
-        // Use lat={lat}&lon={lon} for coordinates
+   
+        var APIkey = "33600f0073ced31aaa6969ba360fc0d0";
+    
         var QueryURL ="https://api.openweathermap.org/data/2.5/forecast?" + lat + "&" + lon  + "&units=imperial&appid=" + APIkey;
         console.log(QueryURL )
         $.ajax({
@@ -384,10 +341,6 @@ function weather(lat, lon) {
             for (var i = 0; i < response.list.length; i++) {
                 if (i%8 === 0) {
           
-//  $("#displayParks").append("<div  id='temp'>" + response.list[i].main.temp + "</div><div id='wind'>" + response.list[i].wind.speed + "</div><div  id='humidity'>" + response.list[i].main.humidity + "</div>")
-                //$("#weather").append(weatherDisplay(response, i))
-                //console.log(weatherResponse(response, i))
-                //response.list[i].main.temp
                 var weatherDisp = $("<div>")
 
                 var weatherP = $("<p>")
@@ -398,8 +351,7 @@ function weather(lat, lon) {
                 var weatherP = $("<p>")
                 weatherP.html("Temperature: " + response.list[i].main.temp)
                 weatherDisp.append(weatherP)
-
-                   
+       
 
                 var weatherP = $("<p>")
                 weatherP.html("Wind Speed: " + response.list[i].wind.speed)
@@ -418,15 +370,9 @@ function weather(lat, lon) {
                 weatherDisp.addClass("weather")
                 
                 $("#weather").append(weatherDisp)
-                // var weatherInput = (response.list[i].main.temp + response.list[i].wind.speed + response.list[i].main.humidity
-                // <div id="temp"></div>
-                
-                // <div id="wind"></div>
+               
                 }
             }
-            // <div id="temp"></div>
-            // <div id="wind"></div>
-            // <div id="humidity"></div> 
 
             getParksInfoByCode(parkCodeToPass)
         })
