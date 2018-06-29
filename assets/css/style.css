@@ -66,44 +66,64 @@ text-align: center;
 
  #weather-card-1 {
     margin: 10;
-    width:370px;
-    height:300px;
+    width:190px;
+    height:190px;
     float:left;
+    text-align:center;
     border-style: solid;
-    background-color:none;
+    border-color: blue;
+    background-color:lightblue;
+    opacity: 0.5;
   }
   
   #weather-card-2 {
     margin: 10;
-    width:370px;
-    height:300px;
+    width:190px;
+    height:190px;
     float:left;
+    text-align:center;
     border-style: solid;
-    background-color: none;
+    border-color: blue;
+    background-color:lightblue;
+    opacity: 0.5;
   }
   
   #weather-card-3 {
     margin: 10;
-    width:370px;
-    height:300px;
+    width:190px;
+    height:190px;
     float:left;
+    text-align:center;
     border-style: solid;
-    background-color:none;
+    border-color: blue;
+    background-color:lightblue;
+    opacity: 0.5;
   }
 
-  #location-card {
-      width: 1150px;
-      height: 90px;
-      float: left;
-      margin-left: 150;
-      border-style: solid;
-      background-color: none;
+  #weather-card-4 {
+    margin: 10;
+    width:190px;
+    height:190px;
+    float:left;
+    text-align:center;
+    border-style: solid;
+    border-color: blue;
+    background-color:lightblue;
+    opacity: 0.5;
+  }
+
+  #weather-card-5 {
+    margin: 10;
+    width:190px;
+    height:190px;
+    float:left;
+    text-align:center;
+    border-style: solid;
+    border-color: blue;
+    background-color:lightblue;
+    opacity: 0.5;
   }
 
 
- /* .weather-display {
-    display: inline-block;
-    width: 100%;
-    height: 300px;
-    background-color: red;
- } */
+
+

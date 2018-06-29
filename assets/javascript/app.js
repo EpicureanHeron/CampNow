@@ -377,7 +377,7 @@ function googleMaps(queryCaptured) {
 
 function weather(lat, lon) {  
     //Calling weather API
-            var APIkey = "33600f0073ced31aaa6969ba360fc0d0";
+        var APIkey = "33600f0073ced31aaa6969ba360fc0d0";
     //POSSIBILITY EXISTS THAT THE LAT AND LONG ARE NOT PASSED
     //PUT IN AN IF THAT DOES THE FOLLOWING: if (typeof myVar != 'undefined')
       
@@ -393,16 +393,14 @@ function weather(lat, lon) {
             for (var i = 0; i < response.list.length; i++) {
                 if (i%8 === 0) {
           
-                 $("#displayParks").append("<div  id='temp'>" + response.list[i].main.temp + "</div><div id='wind'>" + response.list[i].wind.speed + "</div><div  id='humidity'>" + response.list[i].main.humidity + "</div>")
-                //$("#weather").append(weatherDisplay(response, i))
-                //console.log(weatherResponse(response, i))
-                //response.list[i].main.temp
+                 $("#weather-card-1").append("<div  id='temp'>" + "TEMP: " + response.list[i].main.temp + "</div><div id='wind'>" + "WIND MPH: " + response.list[i].wind.speed + "</div><div  id='humidity'>" + "HUMIDITY: " + response.list[i].main.humidity + "</div>")
+                 $("#weather-card-2").append("<div  id='temp'>" + "TEMP: " + response.list[i].main.temp + "</div><div id='wind'>" + "WIND MPH: " + response.list[i].wind.speed + "</div><div  id='humidity'>" + "HUMIDITY: " + response.list[i].main.humidity + "</div>")
+                 $("#weather-card-3").append("<div  id='temp'>" + "TEMP: " + response.list[i].main.temp + "</div><div id='wind'>" + "WIND MPH: " + response.list[i].wind.speed + "</div><div  id='humidity'>" + "HUMIDITY: " + response.list[i].main.humidity + "</div>")
+                 $("#weather-card-4").append("<div  id='temp'>" + "TEMP: " + response.list[i].main.temp + "</div><div id='wind'>" + "WIND MPH: " + response.list[i].wind.speed + "</div><div  id='humidity'>" + "HUMIDITY: " + response.list[i].main.humidity + "</div>")
+                 $("#weather-card-5").append("<div  id='temp'>" + "TEMP: " + response.list[i].main.temp + "</div><div id='wind'>" + "WIND MPH: " + response.list[i].wind.speed + "</div><div  id='humidity'>" + "HUMIDITY: " + response.list[i].main.humidity + "</div>")
                 }
             }
-            // <div id="temp"></div>
-            // <div id="wind"></div>
-            // <div id="humidity"></div> 
-
+           
             getParksInfoByCode(parkCodeToPass)
         })
 
