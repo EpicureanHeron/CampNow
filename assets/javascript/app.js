@@ -12,32 +12,15 @@ var parkCodeToPass = ""
 var fullNameToPass = ""
 
 $(document).ready(function() {
+   
+
     $("#submitButton").on("click", function(event) {
         event.preventDefault();
 
 
         //call modal
 
-     
-// Modal alert trigger logic
-// If dates are withing 5 days, modal will not trigger
-var departureDate = $("#departureDate").val()
-console.log(departureDate)
-
-// If dates exceed 5 day Trigger Modal
-
-var day = moment().diff(departureDate, 'day')
-console.log(day)
-
-//logic for date out to far
-
-if (day < -6) {
-    $('#calendarAlert').modal()
     
-}
-
-
-
 
         
     // This line of code will grab the input from the textbox
@@ -46,12 +29,18 @@ if (day < -6) {
     // The movie from the textbox is then added to our array
         console.log(where)
     // Calling renderButtons which handles the processing of our movie array
-    $(".dateFieldWrap").empty()
+    if(where.length === 2) {
+        getParksByState(where)
+        renderResetButton()
+    }
+    else{
+        console.log("Modal should Appear")
+        $('#myModal').modal('show')
+    }
 
-
-    getParksByState(where)
+   
  
-    renderResetButton()
+    
     });
 })
 
