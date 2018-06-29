@@ -4,131 +4,100 @@
     <head>
         <meta charset="UTF-8">
         <title>Camp Now!</title>
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
         
-        <!-- This links to the jQuery Library -->
-       
-        
-      <!-- Added a link to Bootstrap-->
-       
-      
-       
+          <!--jquery-->
+
+          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+          <!--bootstrap javascript-->
+
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <!--bootstrap-->
+
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+          <!--group style sheet-->
+          
+          <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     </head>
     <body>
-      <div class="container"></div>
-            <div class="row">
-                <div class="col-md-12">
-                  <div class="jumbotron">
-                     <!--  <img width="250" src="assets/images/Logo2.jpg" alt="Camp Now"> -->
-                       <h1 class="display-1">Find your next Camping Spot...</h1>
-                       <!-- <h1><img width="350" src="assets/images/Logo2.jpg" alt="logo" /> Camp Now<br>Find your next camping spot!</h1>-->
-                        
-                        
-                    
-                <!--closes col-->
-                </div>
-            <!--closes row-->
+      <div class="container">
+
+        <!-- <div class="row">
+          <div class="col-md-12">
+
+            <div class="jumbotron" id="displayParks">
+              <h1 class="display-1">Find your next Camping Spot...</h1>                              
             </div>
 
+          </div>
+        </div> -->
         <div class="row">
             <div class="col-md-12">
-                <div id="resetButton"></div>
+                
                 <div id="displayParks"></div>
                  <div id="parksImg"></div>
                  <div id="campInfo"></div>
             </div>
         </div>
 
+           
+        <div class="row">
+          <div class="col-md-4"></div>
+
+            <div class="col-md-5">
+                <div id="resetButton"></div>
+              <img width="400" src="assets/images/Logo2.jpg" alt="Camp Now"> 
+            </div> 
+
+            <div class="col-md-3"> </div>
+        </div>
+
+        
+
         <div class="row">
             <div class="col-md-12">
                 
-                    <div class="dateFieldWrap airShoppingDateFieldWrap">
-                            <div class="search-left-cell">
-                            <div> <label for="departureDate" >Depart Date</label></div>
-                                <div class="inputWrap">
-                 <form>
-
-                        <img width="350" src="assets/images/Logo2.jpg" alt="Camp Now"> <br>
-            <b>Which State do you want to camp in?:</b> <input type="text" name="where" id="where"><br>
-            <!-- Start: <input type="date" name="traveldate">
-            End: <input type="date" name="traveldate"><br> -->
-
-
-         
-                        <input type="date" name="departureDate" maxlength="10" value="" id="departureDate" class="search-txt-field-Cal depart" autocomplete="off" aria-describedby="departDisc" aria-required="true" aria-haspopup="true" aria-invalid="false" placeholder="mm/dd/yyyy"/>
-                        <span id="departDisc" class="aria-offscreen">Select Depart Date</span>
-                        <span class="calendarClickIcon" id="depDateCalIcon"></span> </div>
+              <div class="dateFieldWrap airShoppingDateFieldWrap">
+                  <div class="search-left-cell">
+                    <div class="inputWrap">
+                      <div class="box">
+                        <b>Enter a state code:</b> <input type="text" name="where" id="where" placeholder="Codes like MN, IA, WI...">
+                          <input type="submit" value="Submit" id="submitButton">
+            
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="search-middle-cell">&nbsp;</div>
-                <div class="search-right-cell">
-                <div> <label for="returnDate" id="lblRetDate" >Return Date</label></div>
-                    <div id="roundtripDateWrap">
-                        <input type="date" name="returnDate" maxlength="10" value="" id="returnDate" class="search-txt-field-Cal return" autocomplete="off" aria-describedby="returnDisc" aria-required="true" aria-haspopup="true" aria-invalid="false" placeholder="mm/dd/yyyy"/>
-                        <span id="returnDisc" class="aria-offscreen">Select Return Date</span>
-                        <span class="calendarClickIcon" id="retDateCalIcon"></span> </div>
-                </div>
-            </div>
-
-               <!-- Insert Modal -->
-                <!-- Button trigger modal
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-    Check your dates!
-  </button>-->
-  
-  <!-- Modal -->
-  <div class="modal" tabindex="-1" role="dialog" id="myModal">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>Modal body text goes here.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Save changes</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-                <div class="form-check">
-                        <input type="checkbox" name="activity" value="Camping"> Camping<br>
-                        <input type="checkbox" name="activity" value="Hiking"> Hiking<br>
-                        <input type="checkbox" name="activity" value="Kayaking"> Kayaking<br>
-                        <input type="checkbox" name="activity" value="Fishing"> Fishing<br>
-                        <input type="checkbox" name="activity" value="Campfire"> Campfire<br>
-                        
-                      
-                <input type="submit" value="Submit" id="submitButton">
-
-                <!-- Enter Dates - pop up Calendar -->
-                <!-- Beginning and ending date -->
-                <!-- Desired Activity - Drop down - Array - Ask Joe about NPS listed activities -->
-
-                <!-- Return Info: Parks / Weather Info / Activities -->
-
-              </form>
-
-
-            </div>
-        </div>
         
-       </div>
-  
-        </div>
-    <!--closes container-->
+              </div>
+          </div>
+
+
+           <!-- Modal -->
+          <div class="modal" tabindex="-1" role="dialog" id="myModal">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Too many characters</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Please </p>
+                  </div>
+                  <div class="modal-footer">
+                    
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+        <div id="map"></div>
+  <!--closes container-->
     </div>
 
-        <div id="map"></div>
-
+       
 
 
 <!--Firebase-->
