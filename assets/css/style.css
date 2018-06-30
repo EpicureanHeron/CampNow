@@ -1,45 +1,19 @@
 body {
-    
     background-image: url("../images/background.jpg");
-    background-repeat: no-repeat;
+    background-repeat: repeat;
+    overflow: auto;
     background-size: 100%;
-    height: 960px;
+    height: 960px;  
 }
-
-/*p {
-    margin: 0px 0px 0px 100px;
-}*/
-
 #input {
-    margin: 0px 0px 0px 100px;
-    /*margin-top: 8%;*/
+    margin-top: 8%;
     margin-left: 10%;
-}
-
-.activities {
-    margin: 0px 0px 0px 100px;
-    line-height: 20px;
-}
-
-.form-check {
-    margin: 0px 0px 0px 200px;
-    font-weight: bold;
-}
-
-.jumbotron {
-    margin-bottom: 0px;
-    /* background-image: url(../img/jumbotronbackground.jpg); */
-    background-position: 0% 25%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: rgb(32, 100, 36);
-    /* text-shadow: black 0.3em 0.3em 0.3em; */
 }
 
 .joePlaceHolder {
     float: left;
     height: 300px;
-    width: 300px;
+    width: 350px;
     margin: 10px;
     border: 1px solid black;
     background-color: white;
@@ -64,4 +38,39 @@ body {
     width: 100px;
     height: 50px;
     
+}
+
+
+.box { 
+    margin-right: auto;
+    margin-left: auto;
+    width: 700px;
+    height: 90px;
+    padding: 5px 5px 5px 5px;
+    border-style: solid;
+    border-width: 5px;
+    background-color: rgba(245, 245, 139, 0.3);
+    border-color:#4b535e;
+    font-size: 22px;
+
+  } 
+
+  .weather {
+    float: left;
+    height: 250px;
+    width: 210px;
+    margin: 5px;
+    border: 1px solid blue;
+    background-color: lightblue;
+    opacity: 0.9;
+    padding: 5px;
+  } 
+
+  .clearfix {
+    overflow: auto;
+  }
+
+  #weather-container {
+    margin-top: 250;
+    margin-left: 140;
 }
