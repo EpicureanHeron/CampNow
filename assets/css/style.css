@@ -67,13 +67,15 @@ text-align: center;
 
 .weather {
   float: left;
-  height: 250px;
+  height: 230px;
   width: 210px;
   margin: 5px;
   border: 1px solid blue;
   background-color: lightblue;
   opacity: 0.9;
   padding: 5px;
+  border-radius: 25px;
+  text-align: center;
 }
 
 .clearfix {

@@ -327,28 +327,28 @@ function weather(lat, lon) {
           
                 var weatherDisp = $("<div>")
 
-                var weatherP = $("<p>")
-                weatherP.html("Date: " + response.list[i].dt_txt.slice(0,10))
+                var weatherP = $("<h2>")
+                weatherP.html(response.list[i].dt_txt.slice(0,10))
                 weatherDisp.append(weatherP)
 
 
                 var weatherP = $("<p>")
-                weatherP.html("Temperature: " + response.list[i].main.temp)
+                weatherP.html("Temp: " + response.list[i].main.temp + "&#176; F")
                 weatherDisp.append(weatherP)
        
 
                 var weatherP = $("<p>")
-                weatherP.html("Wind Speed: " + response.list[i].wind.speed)
+                weatherP.html("Wind Speed: " + response.list[i].wind.speed + " MPH")
                 weatherDisp.append(weatherP)
 
 
-                var weatherP = $("<p>")
-                weatherP.html("Humidity: " + response.list[i].main.humidity)
-                weatherDisp.append(weatherP)
+                // var weatherP = $("<p>")
+                // weatherP.html("Humidity: " + response.list[i].main.humidity)
+                // weatherDisp.append(weatherP)
                
 
                 var weatherP = $("<p>")
-                weatherP.html("Description: " + response.list[i].weather[0].description)
+                weatherP.html("Weather: " + response.list[i].weather[0].description)
                 weatherDisp.append(weatherP)
                 
                 weatherDisp.addClass("weather")
