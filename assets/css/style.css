@@ -26,6 +26,10 @@ body {
   padding: 5px;
 }
 
+.joePlaceHolder:hover {
+  opacity: 1;
+}
+
 .campSitePlaceHolder{
 width: 100%;
 height: auto;
