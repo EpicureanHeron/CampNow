@@ -24,6 +24,8 @@ body {
   background-color: white;
   opacity: 0.8;
   padding: 8px;
+  -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+  transition: width 2s;
 }
 
 .joePlaceHolder:hover {
