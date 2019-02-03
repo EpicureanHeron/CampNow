@@ -1,29 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+<head>
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 
-        <meta charset="UTF-8">
-        <title>Camp Now!</title>
-        
-          <!--jquery-->
+  <meta charset="UTF-8">
+  <title>Camp Now!</title>
 
-          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-          <!--bootstrap javascript-->
+  <!--jquery-->
 
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <!--bootstrap-->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!--bootstrap javascript-->
 
-          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-          <!--group style sheet-->
-          
-          <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    </head>
-    <body>
-      <div class="container">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  <!--bootstrap-->
 
-        <!-- <div class="row">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <!--group style sheet-->
+
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-133442962-1');
+  </script>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- <div class="row">
           <div class="col-md-12">
 
             <div class="jumbotron" id="displayParks">
@@ -32,88 +43,89 @@
 
           </div>
         </div> -->
-        <div class="row">
-            <div class="col-md-12">
-                <div id="weather"></div>
-                <div style="clear: both;"></div>
-                <div class="clearfix"></div>
-                  <div id="displayParks"></div>
-                  <div style="clear: both;"></div>
-                 <div id="parksImg"></div>
-                 <div style="clear: both;"></div>
-                 <div id="campInfo"></div>
-            </div>
-        </div>
-
-           
-        <div class="row">
-          <div class="col-md-4"></div>
-
-            <div class="col-md-5">
-                <div id="resetButton"></div>
-              <img width="400" src="assets/images/Logo2.jpg" alt="Camp Now"> 
-            </div> 
-
-            <div class="col-md-3"> </div>
-        </div>
-
-        
-
-        <div class="row">
-            <div class="col-md-12">
-                
-              <div class="dateFieldWrap airShoppingDateFieldWrap">
-                  <div class="search-left-cell">
-                    <div class="inputWrap">
-                      <div class="box">
-                        <b>Enter a state code:</b> <input type="text" name="where" id="where" placeholder="MN, IA, WI, ND...">
-                          <input type="submit" value="Let's Camp!" id="submitButton">
-            
-                      </div>
-                    </div>
-                  </div>
-                </div>
-        
-              </div>
-          </div>
-
-
-           <!-- Modal -->
-          <div class="modal" tabindex="-1" role="dialog" id="myModal">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title">Something's not right...</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <p>Please enter a valid 2 character state code such as NY, WY, MA...</p>
-                  </div>
-                  <div class="modal-footer">
-
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-      
-        <div id="map"></div>
-  <!--closes container-->
+    <div class="row">
+      <div class="col-md-12">
+        <div id="weather"></div>
+        <div style="clear: both;"></div>
+        <div class="clearfix"></div>
+        <div id="displayParks"></div>
+        <div style="clear: both;"></div>
+        <div id="parksImg"></div>
+        <div style="clear: both;"></div>
+        <div id="campInfo"></div>
+      </div>
     </div>
 
-       
+
+    <div class="row">
+      <div class="col-md-4"></div>
+
+      <div class="col-md-5">
+        <div id="resetButton"></div>
+        <img width="400" src="assets/images/Logo2.jpg" alt="Camp Now">
+      </div>
+
+      <div class="col-md-3"> </div>
+    </div>
 
 
-<!--Firebase-->
-<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="dateFieldWrap airShoppingDateFieldWrap">
+          <div class="search-left-cell">
+            <div class="inputWrap">
+              <div class="box">
+                <b>Enter a state code:</b> <input type="text" name="where" id="where" placeholder="MN, IA, WI, ND...">
+                <input type="submit" value="Let's Camp!" id="submitButton">
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbYoOT5mITWb63nwNgO2uLiacThutknIU&libraries=places"></script>
+    <!-- Modal -->
+    <div class="modal" tabindex="-1" role="dialog" id="myModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Something's not right...</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Please enter a valid 2 character state code such as NY, WY, MA...</p>
+          </div>
+          <div class="modal-footer">
 
-<!--script-->
-<script type="text/javascript" src="assets/javascript/app.js"></script>
-<!--Google Maps Script-->
-    </body>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="map"></div>
+    <!--closes container-->
+  </div>
+
+
+
+
+  <!--Firebase-->
+  <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+
+
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbYoOT5mITWb63nwNgO2uLiacThutknIU&libraries=places"></script>
+
+  <!--script-->
+  <script type="text/javascript" src="assets/javascript/app.js"></script>
+  <!--Google Maps Script-->
+</body>
+
 </html>
